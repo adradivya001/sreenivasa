@@ -12,6 +12,7 @@ export interface Doctor {
   qualifications?: string;
   speciality: string;
   specialitySlug: string;
+  secondarySpecialitySlug?: string;
   experience?: string;
   opdTimings?: string;
   phone?: string;
@@ -185,6 +186,7 @@ export const doctors: Doctor[] = [
     qualifications: 'M.S., FRCS',
     speciality: 'Gastroenterology & General Surgery',
     specialitySlug: 'gastroenterology',
+    secondarySpecialitySlug: 'general-surgery',
     opdTimings: 'Mon - Sat: 10:30 AM - 2:00 PM & 6:00 PM - 8:30 PM',
     focusAreas: ['Gallbladder & Appendix Surgery', 'Hernia & Intestinal Surgeries', 'Laparoscopic Keyhole Surgeries', 'Piles, Fissure & Fistula Care'],
     bio: 'Highly experienced gastrointestinal and laparoscopic surgeon performing safe, minimally invasive operations.',

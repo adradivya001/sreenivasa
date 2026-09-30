@@ -27,10 +27,16 @@ export function Specialities() {
   const currentSpeciality = specialities.find(s => s.slug === selectedSlug) || specialities[0];
   const CurrentIcon = iconMap[currentSpeciality.icon] ?? Stethoscope;
 
-  // Filter doctors for the currently active speciality
-  const deptDoctors = doctors.filter(
-    (d: Doctor) => d.specialitySlug === currentSpeciality.slug && !d.isLeadership
-  );
+  // Filter doctors for the currently active speciality (primary slug, secondary slug, or listed doctor name)
+  const deptDoctors = doctors.filter((d: Doctor) => {
+    if (d.isLeadership) return false;
+    if (d.specialitySlug === currentSpeciality.slug) return true;
+    if (d.secondarySpecialitySlug === currentSpeciality.slug) return true;
+    if (currentSpeciality.doctorsList?.some((entry) => entry.toLowerCase().includes(d.name.toLowerCase()))) {
+      return true;
+    }
+    return false;
+  });
 
   return (
     <section
