@@ -152,7 +152,13 @@ export function Hero() {
                   color: '#0E7490',
                   letterSpacing: '0.02em',
                 }}>
-                  <Award size={14} color="#0891B2" />
+                  <motion.span
+                    animate={rm ? {} : { scale: [1, 1.25, 1], opacity: [1, 0.25, 1] }}
+                    transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
+                    style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+                  >
+                    <Award size={14} color="#0891B2" />
+                  </motion.span>
                   AP DME RECOGNIZED HOSPITAL (2025 – 2028)
                 </span>
                 <span style={{ width: '1px', height: '12px', background: '#0891B230' }} />
