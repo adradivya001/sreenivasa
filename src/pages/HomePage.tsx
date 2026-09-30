@@ -1,8 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 import { Hero } from '@/components/sections/Hero';
+import { About } from '@/components/sections/About';
 import { TrustStrip } from '@/components/sections/TrustStrip';
 import { Specialities } from '@/components/sections/Specialities';
-import { WhyChoose } from '@/components/sections/WhyChoose';
 import { CareBeyondVisit } from '@/components/sections/CareBeyondVisit';
 import { CareBand } from '@/components/sections/CareBand';
 import { Appointment } from '@/components/sections/Appointment';
@@ -56,14 +56,15 @@ export function HomePage() {
       {/* 1. HERO SECTION */}
       <Hero />
 
-      {/* 2. TRUST / QUICK STATS */}
+      {/* 2. ABOUT HOSPITAL SECTION */}
+      <About />
+
+      {/* 3. TRUST / QUICK STATS */}
       <TrustStrip />
 
       {/* 3. DEPARTMENTS, SPECIALITIES & DOCTORS (Includes on-duty doctor profiles & timings) */}
       <Specialities />
 
-      {/* 5. WHY CHOOSE SREENIVASA */}
-      <WhyChoose />
 
       {/* 6. CARE BEYOND VISIT (WhatsApp Simulation & Post-Care Journey) */}
       <CareBeyondVisit />
