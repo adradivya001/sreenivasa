@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Phone, MapPin, Stethoscope, ShieldCheck, Clock } from 'lucide-react';
+import { Phone, MapPin, Stethoscope, Clock, ShieldCheck } from 'lucide-react';
 import { siteConfig } from '@/content/site.config';
-import { specialities } from '@/content/specialities';
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -10,160 +9,158 @@ export function Footer() {
     <footer
       role="contentinfo"
       style={{
-        background: '#0F172A',
+        background: '#0B132B',
         color: '#CBD5E1',
-        paddingTop: 'clamp(3rem, 6vw, 5rem)',
-        paddingBottom: 'clamp(1.5rem, 3vw, 2.5rem)',
+        padding: 'clamp(2rem, 3.5vw, 3rem) 0 clamp(1.25rem, 2vw, 1.75rem) 0',
+        borderTop: '1px solid #1E293B',
       }}
     >
       <div className="container" style={{ maxWidth: 1340, margin: '0 auto', padding: '0 clamp(1rem, 3vw, 2.5rem)' }}>
-        {/* Top grid */}
+        
+        {/* Main Footer Row */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-          gap: 'clamp(2rem, 4vw, 3rem)',
-          paddingBottom: '3rem',
-          borderBottom: '1px solid #334155',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+          gap: '1.75rem',
+          paddingBottom: '1.75rem',
+          borderBottom: '1px solid #1E293B',
         }}>
-          {/* Brand */}
-          <div style={{ gridColumn: 'span 1' }}>
+          {/* 1. Brand & Credentials */}
+          <div>
             <div style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: 10,
-              marginBottom: '1.25rem',
+              gap: 8,
+              marginBottom: '0.75rem',
             }}>
               <div style={{
-                width: 42, height: 42, borderRadius: 12,
+                width: 34, height: 34, borderRadius: 10,
                 background: 'linear-gradient(135deg, #0E7490 0%, #0284C7 100%)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 color: '#FFFFFF',
               }}>
-                <Stethoscope size={22} />
+                <Stethoscope size={18} />
               </div>
               <div>
-                <div style={{ fontSize: '1.1rem', fontWeight: 800, color: '#FFFFFF', lineHeight: 1.1 }}>
+                <div style={{ fontSize: '1rem', fontWeight: 800, color: '#FFFFFF', lineHeight: 1.1 }}>
                   SREENIVASA
                 </div>
-                <div style={{ fontSize: '0.72rem', color: '#38BDF8', fontWeight: 700, textTransform: 'uppercase' }}>
+                <div style={{ fontSize: '0.68rem', color: '#38BDF8', fontWeight: 700, textTransform: 'uppercase' }}>
                   Multi Speciality Hospital
                 </div>
               </div>
             </div>
 
-            <p style={{ color: '#94A3B8', fontSize: '0.875rem', lineHeight: 1.7, maxWidth: 320, marginBottom: '1.25rem' }}>
-              Multi-speciality hospital recognized by the Andhra Pradesh Directorate of Medical Education (DME AP) valid through March 2028.
+            <p style={{ color: '#94A3B8', fontSize: '0.8125rem', lineHeight: 1.5, maxWidth: 280, margin: '0 0 10px 0' }}>
+              Recognized by AP Directorate of Medical Education (DME AP) valid through March 2028.
             </p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
               <a
                 href={`tel:${siteConfig.contact.landline}`}
-                style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#CBD5E1', fontSize: '0.875rem', textDecoration: 'none' }}
+                style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#E2E8F0', fontSize: '0.8125rem', textDecoration: 'none' }}
               >
-                <Phone size={14} color="#38BDF8" />
-                <span>Landline: {siteConfig.contact.landlineDisplay}</span>
+                <Phone size={13} color="#38BDF8" />
+                <span>Landline: <strong>{siteConfig.contact.landlineDisplay}</strong></span>
               </a>
               <a
                 href={`tel:${siteConfig.contact.phone}`}
-                style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#CBD5E1', fontSize: '0.875rem', textDecoration: 'none' }}
+                style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#E2E8F0', fontSize: '0.8125rem', textDecoration: 'none' }}
               >
-                <Phone size={14} color="#38BDF8" />
-                <span>Phone: {siteConfig.contact.phoneDisplay}</span>
+                <Phone size={13} color="#38BDF8" />
+                <span>Emergency: <strong>{siteConfig.contact.phoneDisplay}</strong></span>
               </a>
             </div>
           </div>
 
-          {/* 7 Specialities */}
+          {/* 2. Key Specialities (Compact 2-col or curated list) */}
           <div>
-            <h3 style={{ fontSize: '1rem', fontWeight: 750, marginBottom: '1rem', color: '#FFFFFF' }}>
-              Doctor Specialities
+            <h3 style={{ fontSize: '0.875rem', fontWeight: 750, margin: '0 0 0.75rem 0', color: '#FFFFFF', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+              Doctor Departments
             </h3>
-            <ul style={{ display: 'flex', flexDirection: 'column', gap: 8, listStyle: 'none', padding: 0, margin: 0 }}>
-              {specialities.map((spec) => (
-                <li key={spec.slug}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '6px 12px' }}>
+              {[
+                'General Medicine',
+                'OBG & Maternity',
+                'Cardiology',
+                'Pulmonology',
+                'General Surgery',
+                'Ortho & Joints',
+                'Paediatric Surgery',
+                'ENT Clinic',
+                'Neurology',
+                'Urology Laser',
+              ].map((name) => (
+                <a
+                  key={name}
+                  href="/#specialities"
+                  style={{ color: '#94A3B8', fontSize: '0.8rem', textDecoration: 'none', transition: 'color 140ms ease' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = '#38BDF8')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = '#94A3B8')}
+                >
+                  {name}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* 3. In-House Services */}
+          <div>
+            <h3 style={{ fontSize: '0.875rem', fontWeight: 750, margin: '0 0 0.75rem 0', color: '#FFFFFF', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+              Lab & Facilities
+            </h3>
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: 6, listStyle: 'none', padding: 0, margin: 0 }}>
+              {['Pathology Blood Test Lab', '12-Lead ECG Testing', 'Digital X-Ray on-site', '24/7 ICU & Inpatient Beds', 'Laparoscopy Operation Theatres'].map((item) => (
+                <li key={item}>
                   <a
-                    href={`/#specialities`}
-                    style={{ color: '#94A3B8', fontSize: '0.875rem', textDecoration: 'none' }}
+                    href="/#services"
+                    style={{ color: '#94A3B8', fontSize: '0.8rem', textDecoration: 'none' }}
                   >
-                    {spec.name}
+                    {item}
                   </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Diagnostics & Facilities */}
+          {/* 4. Location & Timings */}
           <div>
-            <h3 style={{ fontSize: '1rem', fontWeight: 750, marginBottom: '1rem', color: '#FFFFFF' }}>
-              Lab & Scan Services
+            <h3 style={{ fontSize: '0.875rem', fontWeight: 750, margin: '0 0 0.75rem 0', color: '#FFFFFF', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+              Hospital Location
             </h3>
-            <ul style={{ display: 'flex', flexDirection: 'column', gap: 8, listStyle: 'none', padding: 0, margin: 0 }}>
-              <li>
-                <a href="/#services" style={{ color: '#94A3B8', fontSize: '0.875rem', textDecoration: 'none' }}>
-                  Blood Testing Lab
-                </a>
-              </li>
-              <li>
-                <a href="/#services" style={{ color: '#94A3B8', fontSize: '0.875rem', textDecoration: 'none' }}>
-                  ECG Heart Check
-                </a>
-              </li>
-              <li>
-                <a href="/#services" style={{ color: '#94A3B8', fontSize: '0.875rem', textDecoration: 'none' }}>
-                  Digital X-Ray
-                </a>
-              </li>
-              <li>
-                <a href="/#appointment" style={{ color: '#94A3B8', fontSize: '0.875rem', textDecoration: 'none' }}>
-                  Doctor OPD Timings
-                </a>
-              </li>
-              <li>
-                <a href="/#services" style={{ color: '#94A3B8', fontSize: '0.875rem', textDecoration: 'none' }}>
-                  Surgery & Operations
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Hospital Address */}
-          <div>
-            <h3 style={{ fontSize: '1rem', fontWeight: 750, marginBottom: '1rem', color: '#FFFFFF' }}>
-              Hospital Address
-            </h3>
-            <div style={{ fontSize: '0.875rem', color: '#94A3B8', lineHeight: 1.7 }}>
-              <p style={{ marginBottom: 10 }}>
-                📍 <strong>Sreenivasa Multi Speciality Hospital</strong><br />
-                #28-271, Pranathi Complex,<br />
-                Near Iron Bridge, Subash Road,<br />
-                Anantapur, Andhra Pradesh – 515001.
+            <div style={{ fontSize: '0.8125rem', color: '#94A3B8', lineHeight: 1.5 }}>
+              <p style={{ margin: '0 0 8px 0' }}>
+                📍 <strong>Pranathi Complex, Near Iron Bridge</strong><br />
+                #28-271, Subash Road, Old Town,<br />
+                Anantapur, AP – 515001
               </p>
-              <p style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#38BDF8', fontWeight: 650 }}>
-                <Clock size={15} /> OPD: 9:00 AM - 9:00 PM
-              </p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#38BDF8', fontWeight: 650, fontSize: '0.78rem' }}>
+                <Clock size={13} /> OPD: 9:00 AM - 9:00 PM | 24/7 Emergency
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom bar */}
+        {/* Bottom Legal & Copyright Bar */}
         <div style={{
-          paddingTop: '2rem',
+          paddingTop: '1rem',
           display: 'flex',
           flexWrap: 'wrap',
-          gap: '1rem',
+          gap: '0.75rem',
           justifyContent: 'space-between',
           alignItems: 'center',
-          fontSize: '0.8125rem',
+          fontSize: '0.75rem',
           color: '#64748B',
         }}>
           <div>
             © {year} {siteConfig.name}. Recognized by AP Directorate of Medical Education.
           </div>
-          <div style={{ display: 'flex', gap: '1.5rem' }}>
+          <div style={{ display: 'flex', gap: '1.25rem' }}>
             <Link to="/privacy" style={{ color: '#94A3B8', textDecoration: 'none' }}>Privacy Policy</Link>
             <Link to="/terms" style={{ color: '#94A3B8', textDecoration: 'none' }}>Terms of Service</Link>
           </div>
         </div>
+
       </div>
     </footer>
   );
