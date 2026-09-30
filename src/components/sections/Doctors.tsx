@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useRef } from 'react';
+import { motion } from 'framer-motion';
 import {
-  ShieldCheck, Stethoscope, ArrowRight, UserCheck,
-  Clock, Calendar, Award, Building2, User, Filter, GraduationCap
+  ShieldCheck, Stethoscope, ArrowRight, Clock,
+  Calendar, Award, ChevronLeft, ChevronRight, Pause, Play
 } from 'lucide-react';
 import { doctors, Doctor } from '@/content/doctors';
 import { useInView, useReducedMotion } from '@/hooks';
@@ -15,8 +15,10 @@ function scrollTo(id: string) {
 
 export function Doctors() {
   const [selectedDept, setSelectedDept] = useState<string>('all');
+  const [isPausedByUser, setIsPausedByUser] = useState<boolean>(false);
   const [ref, inView] = useInView<HTMLElement>();
   const reducedMotion = useReducedMotion();
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const leadershipDoctor = doctors.find((d) => d.isLeadership);
   const specialistDoctors = doctors.filter((d) => !d.isLeadership);
@@ -45,16 +47,30 @@ export function Doctors() {
     ? specialistDoctors
     : specialistDoctors.filter((d) => d.specialitySlug === selectedDept);
 
+  // Double the list for seamless infinite marquee loop when 3+ doctors
+  const displayDoctors = filteredDoctors.length >= 3
+    ? [...filteredDoctors, ...filteredDoctors]
+    : filteredDoctors;
+
+  const handleManualScroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const offset = direction === 'left' ? -360 : 360;
+      scrollContainerRef.current.scrollBy({ left: offset, behavior: 'smooth' });
+    }
+  };
+
   return (
     <section
       id="doctors"
       ref={ref}
-      className="section"
+      className="section doctors-section"
       aria-labelledby="doctors-heading"
       style={{
         padding: 'clamp(3.5rem, 6vw, 6rem) 0',
         background: '#ECFEFF',
         borderBottom: '1px solid #CFFAFE',
+        overflow: 'hidden',
+        position: 'relative',
       }}
     >
       <div className="container" style={{ maxWidth: 1340, margin: '0 auto', padding: '0 clamp(1rem, 3vw, 2.5rem)' }}>
@@ -64,13 +80,14 @@ export function Doctors() {
           initial={reducedMotion ? false : { opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55, ease: EASE }}
-          style={{ textAlign: 'center', marginBottom: 'clamp(2.5rem, 4vw, 3.5rem)' }}
+          style={{ textAlign: 'center', marginBottom: 'clamp(2rem, 4vw, 3rem)' }}
         >
           <div style={{
             display: 'inline-flex', alignItems: 'center', gap: '6px',
-            padding: '5px 14px', borderRadius: '100px', background: '#ECFEFF',
-            border: '1px solid #CFFAFE', color: '#0E7490', fontSize: '0.78rem',
-            fontWeight: 750, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '0.75rem'
+            padding: '5px 14px', borderRadius: '100px', background: '#FFFFFF',
+            border: '1px solid #BAE6FD', color: '#0E7490', fontSize: '0.78rem',
+            fontWeight: 750, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '0.75rem',
+            boxShadow: '0 2px 6px rgba(14, 116, 144, 0.06)'
           }}>
             <ShieldCheck size={14} color="#0E7490" /> 20+ SPECIALIST DOCTORS
           </div>
@@ -110,7 +127,7 @@ export function Doctors() {
               padding: 'clamp(1.75rem, 3.5vw, 2.5rem)',
               color: '#FFFFFF',
               boxShadow: '0 16px 40px rgba(15, 23, 42, 0.12)',
-              marginBottom: '3rem',
+              marginBottom: '2.5rem',
               position: 'relative',
               overflow: 'hidden',
             }}
@@ -122,7 +139,7 @@ export function Doctors() {
               alignItems: 'center',
             }}>
               {/* Left Column: Leadership Details */}
-              <div style={{ gridColumn: 'span 8' }}>
+              <div style={{ gridColumn: 'span 8' }} className="lead-doc-left">
                 <div style={{
                   display: 'inline-flex', alignItems: 'center', gap: '6px',
                   padding: '4px 12px', borderRadius: '100px', background: 'rgba(56, 189, 248, 0.15)',
@@ -183,7 +200,7 @@ export function Doctors() {
               </div>
 
               {/* Right Column: Verified Status & Profile Action */}
-              <div style={{ gridColumn: 'span 4', display: 'flex', flexDirection: 'column', gap: '14px' }}>
+              <div style={{ gridColumn: 'span 4', display: 'flex', flexDirection: 'column', gap: '14px' }} className="lead-doc-right">
                 <div style={{
                   background: 'rgba(255,255,255,0.08)',
                   backdropFilter: 'blur(10px)',
@@ -224,23 +241,98 @@ export function Doctors() {
           </motion.div>
         )}
 
-        {/* ── 2. DEPARTMENT FILTER PILLS ─────────── */}
-        <div style={{ marginBottom: '2rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px', flexWrap: 'wrap', gap: '10px' }}>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0F172A', margin: 0 }}>
-              Department Doctors ({filteredDoctors.length})
-            </h3>
-            <span style={{ fontSize: '0.825rem', color: '#64748B' }}>
-              Filter by medical speciality below:
-            </span>
+        {/* ── 2. DEPARTMENT FILTER PILLS & MOVING STATUS BAR ─────────── */}
+        <div style={{ marginBottom: '1.5rem' }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: '14px',
+            flexWrap: 'wrap',
+            gap: '12px',
+          }}>
+            <div>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0F172A', margin: '0 0 2px 0' }}>
+                Specialist Doctors Roster ({filteredDoctors.length})
+              </h3>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', color: '#0E7490', fontWeight: 650 }}>
+                <span className="live-flow-dot" />
+                <span>Continuous Flow Active · <strong>Hover mouse or touch to pause</strong></span>
+              </div>
+            </div>
+
+            {/* Controls: Left / Right Scroll & Pause Toggle */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <button
+                onClick={() => setIsPausedByUser(!isPausedByUser)}
+                title={isPausedByUser ? 'Resume moving' : 'Pause moving'}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  padding: '7px 14px',
+                  borderRadius: '100px',
+                  background: isPausedByUser ? '#0E7490' : '#FFFFFF',
+                  color: isPausedByUser ? '#FFFFFF' : '#0E7490',
+                  border: '1px solid #BAE6FD',
+                  fontSize: '0.78rem',
+                  fontWeight: 750,
+                  cursor: 'pointer',
+                  boxShadow: '0 2px 8px rgba(14, 116, 144, 0.08)',
+                }}
+              >
+                {isPausedByUser ? <Play size={13} fill="currentColor" /> : <Pause size={13} fill="currentColor" />}
+                <span>{isPausedByUser ? 'Resume Flow' : 'Pause Flow'}</span>
+              </button>
+
+              <button
+                onClick={() => handleManualScroll('left')}
+                aria-label="Scroll left"
+                style={{
+                  width: '36px',
+                  height: '36px',
+                  borderRadius: '50%',
+                  background: '#FFFFFF',
+                  border: '1px solid #BAE6FD',
+                  color: '#0E7490',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  boxShadow: '0 2px 8px rgba(14, 116, 144, 0.08)',
+                }}
+              >
+                <ChevronLeft size={18} />
+              </button>
+              <button
+                onClick={() => handleManualScroll('right')}
+                aria-label="Scroll right"
+                style={{
+                  width: '36px',
+                  height: '36px',
+                  borderRadius: '50%',
+                  background: '#FFFFFF',
+                  border: '1px solid #BAE6FD',
+                  color: '#0E7490',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  boxShadow: '0 2px 8px rgba(14, 116, 144, 0.08)',
+                }}
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
           </div>
 
+          {/* Filter Pills */}
           <div style={{
             display: 'flex',
             gap: '8px',
             overflowX: 'auto',
             paddingBottom: '8px',
-            scrollbarWidth: 'thin',
+            scrollbarWidth: 'none',
           }}>
             {departments.map((dept) => {
               const active = selectedDept === dept.id;
@@ -249,51 +341,39 @@ export function Doctors() {
                   key={dept.id}
                   onClick={() => setSelectedDept(dept.id)}
                   style={{
-                    padding: '8px 14px',
+                    padding: '7px 14px',
                     borderRadius: '100px',
-                    fontSize: '0.825rem',
+                    fontSize: '0.8125rem',
                     fontWeight: active ? 750 : 600,
                     color: active ? '#FFFFFF' : '#334155',
                     background: active ? '#0E7490' : '#FFFFFF',
                     border: active ? '1px solid #0E7490' : '1px solid #E2E8F0',
                     cursor: 'pointer',
                     whiteSpace: 'nowrap',
-                    boxShadow: active ? '0 4px 12px rgba(14, 116, 144, 0.2)' : 'none',
+                    boxShadow: active ? '0 4px 12px rgba(14, 116, 144, 0.2)' : '0 1px 3px rgba(0,0,0,0.02)',
                     transition: 'all 160ms ease',
                   }}
                 >
-                  {dept.label}
+                  {dept.label} ({dept.count})
                 </button>
               );
             })}
           </div>
         </div>
 
-        {/* ── 3. DOCTORS GRID ─────────── */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(310px, 1fr))',
-          gap: '20px',
-          marginBottom: '3rem',
-        }}>
-          {filteredDoctors.map((doctor: Doctor, i: number) => {
+      </div>
+
+      {/* ── 3. CONTINUOUS MOVING MARQUEE STRIP (PAUSES ON CURSOR HOVER) ─────────── */}
+      <div
+        className={`doctor-marquee-wrapper ${isPausedByUser ? 'force-paused' : ''}`}
+        ref={scrollContainerRef}
+      >
+        <div className="doctor-marquee-track">
+          {displayDoctors.map((doctor: Doctor, i: number) => {
             return (
-              <motion.div
-                key={doctor.slug}
-                initial={reducedMotion ? false : { opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.45, delay: Math.min(i * 0.04, 0.4), ease: EASE }}
-                whileHover={reducedMotion ? {} : { y: -4, boxShadow: '0 14px 32px rgba(14, 116, 144, 0.1)' }}
-                style={{
-                  background: '#FFFFFF',
-                  borderRadius: '20px',
-                  border: '1px solid #E2E8F0',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.03)',
-                  overflow: 'hidden',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  transition: 'all 240ms ease',
-                }}
+              <div
+                key={`${doctor.slug}-${i}`}
+                className="doctor-card-item"
               >
                 {/* Header Strip with Speciality & Qualification Badge */}
                 <div style={{
@@ -303,24 +383,38 @@ export function Doctors() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
+                  borderTopLeftRadius: '20px',
+                  borderTopRightRadius: '20px',
                 }}>
-                  <div>
+                  <div style={{ minWidth: 0, paddingRight: '6px' }}>
                     <span style={{
                       fontSize: '0.7rem',
                       fontWeight: 750,
                       textTransform: 'uppercase',
                       letterSpacing: '0.04em',
                       color: '#38BDF8',
+                      display: 'block',
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
                     }}>
                       {doctor.speciality}
                     </span>
-                    <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#FFFFFF', marginTop: '2px' }}>
+                    <div style={{
+                      fontSize: '1.025rem',
+                      fontWeight: 800,
+                      color: '#FFFFFF',
+                      marginTop: '2px',
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                    }}>
                       {doctor.name}
                     </div>
                   </div>
                   {doctor.qualifications && (
                     <span style={{
-                      fontSize: '0.72rem',
+                      fontSize: '0.7rem',
                       fontWeight: 800,
                       padding: '4px 8px',
                       borderRadius: '6px',
@@ -328,6 +422,7 @@ export function Doctors() {
                       border: '1px solid rgba(56, 189, 248, 0.35)',
                       color: '#BAE6FD',
                       whiteSpace: 'nowrap',
+                      flexShrink: 0,
                     }}>
                       {doctor.qualifications}
                     </span>
@@ -335,38 +430,39 @@ export function Doctors() {
                 </div>
 
                 {/* Body Content */}
-                <div style={{ padding: '20px', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                  <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0E7490', marginBottom: '8px' }}>
+                <div style={{ padding: '18px 20px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                  <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0E7490', marginBottom: '6px' }}>
                     {doctor.designation}
                   </div>
 
                   {doctor.opdTimings && (
                     <div style={{
                       display: 'flex', alignItems: 'center', gap: '6px',
-                      fontSize: '0.75rem', color: '#64748B', marginBottom: '14px',
+                      fontSize: '0.75rem', color: '#64748B', marginBottom: '12px',
                     }}>
-                      <Clock size={13} color="#0E7490" />
-                      <span>{doctor.opdTimings}</span>
+                      <Clock size={13} color="#0E7490" style={{ flexShrink: 0 }} />
+                      <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{doctor.opdTimings}</span>
                     </div>
                   )}
 
                   <p style={{
-                    fontSize: '0.865rem',
+                    fontSize: '0.85rem',
                     color: '#475569',
-                    lineHeight: 1.55,
+                    lineHeight: 1.5,
                     marginBottom: '14px',
                   }}>
                     {doctor.bio}
                   </p>
 
                   {/* Focus Areas */}
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', marginBottom: '18px', marginTop: 'auto' }}>
-                    {doctor.focusAreas.map((area: string) => (
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', marginBottom: '16px', marginTop: 'auto' }}>
+                    {doctor.focusAreas.slice(0, 3).map((area: string) => (
                       <span key={area} style={{
-                        padding: '4px 8px', borderRadius: '6px',
-                        fontSize: '0.72rem', fontWeight: 600,
+                        padding: '3px 8px', borderRadius: '6px',
+                        fontSize: '0.7rem', fontWeight: 600,
                         background: '#F1F5F9', color: '#334155',
                         border: '1px solid #E2E8F0',
+                        whiteSpace: 'nowrap',
                       }}>
                         {area}
                       </span>
@@ -378,7 +474,7 @@ export function Doctors() {
                     onClick={() => scrollTo('appointment')}
                     style={{
                       width: '100%',
-                      padding: '11px',
+                      padding: '10px',
                       borderRadius: '10px',
                       background: '#0E7490',
                       color: '#FFFFFF',
@@ -396,16 +492,18 @@ export function Doctors() {
                     <Calendar size={14} /> Book Doctor Visit
                   </button>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
+      </div>
 
-        {/* Note on Doctor Roster */}
+      {/* Note on Doctor Roster */}
+      <div className="container" style={{ maxWidth: 1340, margin: '2.5rem auto 0', padding: '0 clamp(1rem, 3vw, 2.5rem)' }}>
         <div style={{
           textAlign: 'center',
           padding: '16px 20px',
-          borderRadius: '14px',
+          borderRadius: '16px',
           background: '#FFFFFF',
           border: '1px solid #CFFAFE',
           maxWidth: '780px',
@@ -416,8 +514,94 @@ export function Doctors() {
         }}>
           💡 <strong>Hospital Consultation Note:</strong> Doctor checkups run Monday to Saturday (9:00 AM – 9:00 PM) and Sunday (9:00 AM – 2:00 PM). Emergency medical and surgical care is open 24/7. Call <strong>08554-272828</strong> or <strong>+91 98498 98698</strong> for immediate doctor availability.
         </div>
-
       </div>
+
+      {/* ── CSS STYLING FOR SMOOTH MOVING FLOW & PAUSE ON HOVER ── */}
+      <style>{`
+        .doctor-marquee-wrapper {
+          width: 100%;
+          overflow-x: auto;
+          overflow-y: hidden;
+          padding: 12px 0 24px 0;
+          cursor: grab;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+        .doctor-marquee-wrapper::-webkit-scrollbar {
+          display: none;
+        }
+        .doctor-marquee-track {
+          display: flex;
+          gap: 20px;
+          width: max-content;
+          animation: moveDoctors 60s linear infinite;
+          will-change: transform;
+        }
+
+        /* PAUSE MOVING EFFECT WHEN CURSOR IS PLACED / HOVERED */
+        .doctor-marquee-wrapper:hover .doctor-marquee-track {
+          animation-play-state: paused !important;
+        }
+
+        .doctor-marquee-wrapper.force-paused .doctor-marquee-track {
+          animation-play-state: paused !important;
+        }
+
+        @keyframes moveDoctors {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
+        .doctor-card-item {
+          width: 320px;
+          flex-shrink: 0;
+          background: #FFFFFF;
+          border-radius: 20px;
+          border: 1px solid #E2E8F0;
+          box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+          display: flex;
+          flex-direction: column;
+          transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
+        }
+
+        .doctor-card-item:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 16px 36px rgba(14, 116, 144, 0.14);
+          border-color: #0E7490;
+        }
+
+        .live-flow-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #10B981;
+          display: inline-block;
+          box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+          animation: pulseGreen 1.8s infinite cubic-bezier(0.66, 0, 0, 1);
+        }
+
+        @keyframes pulseGreen {
+          0% {
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+          }
+          70% {
+            box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+          }
+          100% {
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+          }
+        }
+
+        @media (max-width: 992px) {
+          .lead-doc-left { grid-column: span 12 !important; }
+          .lead-doc-right { grid-column: span 12 !important; margin-top: 1rem; }
+          .doctor-card-item { width: 295px; }
+        }
+      `}</style>
     </section>
   );
 }
