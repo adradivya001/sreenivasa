@@ -2,7 +2,6 @@ import { Helmet } from 'react-helmet-async';
 import { Hero } from '@/components/sections/Hero';
 import { TrustStrip } from '@/components/sections/TrustStrip';
 import { Specialities } from '@/components/sections/Specialities';
-import { Doctors } from '@/components/sections/Doctors';
 import { WhyChoose } from '@/components/sections/WhyChoose';
 import { CareBeyondVisit } from '@/components/sections/CareBeyondVisit';
 import { CareBand } from '@/components/sections/CareBand';
@@ -60,11 +59,8 @@ export function HomePage() {
       {/* 2. TRUST / QUICK STATS */}
       <TrustStrip />
 
-      {/* 3. DEPARTMENTS & SPECIALITIES (Includes Diagnostics) */}
+      {/* 3. DEPARTMENTS, SPECIALITIES & DOCTORS (Includes on-duty doctor profiles & timings) */}
       <Specialities />
-
-      {/* 4. DOCTORS & SPECIALISTS */}
-      <Doctors />
 
       {/* 5. WHY CHOOSE SREENIVASA */}
       <WhyChoose />

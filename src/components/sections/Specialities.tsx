@@ -3,9 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Stethoscope, Activity, HeartHandshake, Baby,
   Brain, Bone, Ear, ArrowRight, CheckCircle2, ShieldCheck,
-  UserCheck, Users, Sparkles
+  UserCheck, Users, Clock, Calendar, ChevronRight
 } from 'lucide-react';
-import { specialities, Speciality } from '@/content/specialities';
+import { specialities } from '@/content/specialities';
+import { doctors, Doctor } from '@/content/doctors';
 import { useInView, useReducedMotion } from '@/hooks';
 
 const iconMap: Record<string, React.ComponentType<{ size?: number; color?: string; className?: string }>> = {
@@ -26,6 +27,11 @@ export function Specialities() {
   const currentSpeciality = specialities.find(s => s.slug === selectedSlug) || specialities[0];
   const CurrentIcon = iconMap[currentSpeciality.icon] ?? Stethoscope;
 
+  // Filter doctors for the currently active speciality
+  const deptDoctors = doctors.filter(
+    (d: Doctor) => d.specialitySlug === currentSpeciality.slug && !d.isLeadership
+  );
+
   return (
     <section
       id="specialities"
@@ -38,6 +44,9 @@ export function Specialities() {
         borderBottom: '1px solid #CFFAFE',
       }}
     >
+      {/* Anchor for #doctors navigation */}
+      <div id="doctors" style={{ position: 'relative', top: '-80px' }} />
+
       <div className="container" style={{ maxWidth: 1340, margin: '0 auto', padding: '0 clamp(1rem, 3vw, 2.5rem)' }}>
 
         {/* Section Header */}
@@ -53,7 +62,7 @@ export function Specialities() {
             border: '1px solid #CFFAFE', color: '#0E7490', fontSize: '0.78rem',
             fontWeight: 750, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '0.6rem'
           }}>
-            <ShieldCheck size={14} color="#0E7490" /> 15 MEDICAL DEPARTMENTS
+            <ShieldCheck size={14} color="#0E7490" /> 15 DEPARTMENTS & 20+ SPECIALISTS
           </div>
           <h2
             id="specialities-heading"
@@ -70,14 +79,14 @@ export function Specialities() {
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             }}>
-              Specialities
+              Specialities & Teams
             </span>
           </h2>
           <p style={{
             marginTop: '8px', color: '#64748B', fontSize: '1rem',
-            maxWidth: 640, margin: '8px auto 0', lineHeight: 1.55
+            maxWidth: 680, margin: '8px auto 0', lineHeight: 1.55
           }}>
-            Click any department below to view specialists, treatments, and book doctor checkups.
+            Select any department to view on-duty specialist doctors, consultation timings, treatments, and book appointments.
           </p>
         </motion.div>
 
@@ -86,7 +95,7 @@ export function Specialities() {
           className="specialities-split-layout"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'minmax(300px, 420px) 1fr',
+            gridTemplateColumns: 'minmax(280px, 380px) 1fr',
             gap: '24px',
             alignItems: 'stretch',
           }}
@@ -99,7 +108,7 @@ export function Specialities() {
               padding: '14px',
               border: '1px solid #E2E8F0',
               boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
-              maxHeight: '560px',
+              maxHeight: '680px',
               overflowY: 'auto',
               display: 'flex',
               flexDirection: 'column',
@@ -180,7 +189,7 @@ export function Specialities() {
                         textOverflow: 'ellipsis',
                       }}>
                         {spec.doctorsList && spec.doctorsList.length > 0
-                          ? `${spec.doctorsList.length} Doctor${spec.doctorsList.length > 1 ? 's' : ''}`
+                          ? `${spec.doctorsList.length} Specialist${spec.doctorsList.length > 1 ? 's' : ''}`
                           : spec.badge || 'Specialist Care'}
                       </div>
                     </div>
@@ -200,7 +209,7 @@ export function Specialities() {
             })}
           </div>
 
-          {/* ══ RIGHT: Active Speciality Spotlight Card ════ */}
+          {/* ══ RIGHT: Active Speciality Spotlight & Doctor Context ════ */}
           <div style={{ minWidth: 0 }}>
             <AnimatePresence mode="wait">
               <motion.div
@@ -212,7 +221,7 @@ export function Specialities() {
                 style={{
                   background: 'linear-gradient(135deg, #0F172A 0%, #164E63 100%)',
                   borderRadius: '24px',
-                  padding: 'clamp(1.75rem, 3.5vw, 2.5rem)',
+                  padding: 'clamp(1.5rem, 3vw, 2.25rem)',
                   color: '#FFFFFF',
                   boxShadow: '0 16px 40px rgba(15, 23, 42, 0.12)',
                   height: '100%',
@@ -224,21 +233,21 @@ export function Specialities() {
                   overflow: 'hidden',
                 }}
               >
-                {/* Decorative background circle */}
+                {/* Decorative background ambient glow */}
                 <div style={{
                   position: 'absolute',
                   top: '-40px',
                   right: '-40px',
-                  width: '200px',
-                  height: '200px',
+                  width: '240px',
+                  height: '240px',
                   borderRadius: '50%',
-                  background: 'radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 70%)',
+                  background: 'radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%)',
                   pointerEvents: 'none',
                 }} />
 
                 <div>
                   {/* Top Badge & Header */}
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px', flexWrap: 'wrap', gap: '8px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px', flexWrap: 'wrap', gap: '8px' }}>
                     <div style={{
                       display: 'inline-flex',
                       alignItems: 'center',
@@ -262,9 +271,9 @@ export function Specialities() {
                   </div>
 
                   <h3 style={{
-                    fontSize: 'clamp(1.5rem, 2.5vw, 2.2rem)',
+                    fontSize: 'clamp(1.5rem, 2.4vw, 2.1rem)',
                     fontWeight: 850,
-                    margin: '0 0 10px 0',
+                    margin: '0 0 8px 0',
                     color: '#FFFFFF',
                     lineHeight: 1.2,
                   }}>
@@ -272,51 +281,173 @@ export function Specialities() {
                   </h3>
 
                   <p style={{
-                    fontSize: '0.95rem',
+                    fontSize: '0.925rem',
                     color: '#CBD5E1',
-                    lineHeight: 1.65,
-                    margin: '0 0 18px 0',
+                    lineHeight: 1.6,
+                    margin: '0 0 16px 0',
                   }}>
                     {currentSpeciality.fullOverview || currentSpeciality.description}
                   </p>
 
-                  {/* Doctors on Board */}
-                  {currentSpeciality.doctorsList && currentSpeciality.doctorsList.length > 0 && (
+                  {/* ── 1. ON-DUTY SPECIALIST DOCTORS (Merged Doctor Context) ── */}
+                  <div style={{ marginBottom: '18px' }}>
                     <div style={{
-                      background: 'rgba(255, 255, 255, 0.08)',
-                      backdropFilter: 'blur(8px)',
-                      padding: '12px 16px',
-                      borderRadius: '14px',
-                      border: '1px solid rgba(255, 255, 255, 0.14)',
-                      marginBottom: '18px',
+                      fontSize: '0.75rem',
+                      fontWeight: 800,
+                      color: '#38BDF8',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em',
+                      marginBottom: '10px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '6px'
                     }}>
-                      <div style={{
-                        fontSize: '0.72rem',
-                        fontWeight: 750,
-                        color: '#38BDF8',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.04em',
-                        marginBottom: '4px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '6px',
-                      }}>
-                        <Users size={13} color="#38BDF8" /> Department Specialists:
-                      </div>
-                      <div style={{ fontSize: '0.925rem', color: '#FFFFFF', fontWeight: 700 }}>
-                        {currentSpeciality.doctorsList.join(' · ')}
-                      </div>
+                      <Users size={14} color="#38BDF8" />
+                      <span>On-Duty Specialists & Surgeons ({deptDoctors.length || (currentSpeciality.doctorsList?.length ?? 1)})</span>
                     </div>
-                  )}
 
-                  {/* Treatments / Services Checklist */}
+                    <div style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+                      gap: '12px'
+                    }}>
+                      {deptDoctors.length > 0 ? (
+                        deptDoctors.map((doc: Doctor) => (
+                          <div
+                            key={doc.slug}
+                            style={{
+                              background: 'rgba(255, 255, 255, 0.08)',
+                              border: '1px solid rgba(255, 255, 255, 0.16)',
+                              borderRadius: '16px',
+                              padding: '14px 16px',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              justifyContent: 'space-between',
+                              backdropFilter: 'blur(8px)',
+                              boxSizing: 'border-box',
+                            }}
+                          >
+                            <div>
+                              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '8px', marginBottom: '4px' }}>
+                                <div style={{ fontSize: '1.025rem', fontWeight: 800, color: '#FFFFFF' }}>
+                                  {doc.name}
+                                </div>
+                                {doc.qualifications && (
+                                  <span style={{
+                                    fontSize: '0.68rem',
+                                    fontWeight: 800,
+                                    padding: '2px 8px',
+                                    borderRadius: '6px',
+                                    background: 'rgba(56, 189, 248, 0.25)',
+                                    border: '1px solid rgba(56, 189, 248, 0.4)',
+                                    color: '#BAE6FD',
+                                    whiteSpace: 'nowrap',
+                                    flexShrink: 0,
+                                  }}>
+                                    {doc.qualifications}
+                                  </span>
+                                )}
+                              </div>
+
+                              <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#38BDF8', marginBottom: '8px' }}>
+                                {doc.designation}
+                              </div>
+
+                              {doc.opdTimings && (
+                                <div style={{
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  gap: '6px',
+                                  fontSize: '0.75rem',
+                                  color: '#CBD5E1',
+                                  marginBottom: '8px',
+                                  background: 'rgba(0, 0, 0, 0.22)',
+                                  padding: '5px 8px',
+                                  borderRadius: '6px',
+                                }}>
+                                  <Clock size={12} color="#38BDF8" style={{ flexShrink: 0 }} />
+                                  <span>{doc.opdTimings}</span>
+                                </div>
+                              )}
+
+                              <p style={{ fontSize: '0.825rem', color: '#E2E8F0', lineHeight: 1.45, margin: '0 0 10px 0' }}>
+                                {doc.bio}
+                              </p>
+
+                              {/* Doctor focus pills */}
+                              {doc.focusAreas && doc.focusAreas.length > 0 && (
+                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', marginBottom: '12px' }}>
+                                  {doc.focusAreas.slice(0, 3).map((area: string) => (
+                                    <span
+                                      key={area}
+                                      style={{
+                                        fontSize: '0.68rem',
+                                        fontWeight: 600,
+                                        padding: '2px 7px',
+                                        borderRadius: '5px',
+                                        background: 'rgba(255, 255, 255, 0.1)',
+                                        color: '#BAE6FD',
+                                        border: '1px solid rgba(255, 255, 255, 0.12)',
+                                      }}
+                                    >
+                                      {area}
+                                    </span>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+
+                            <button
+                              onClick={() => scrollTo('appointment')}
+                              style={{
+                                width: '100%',
+                                padding: '8px 12px',
+                                borderRadius: '8px',
+                                background: '#0E7490',
+                                color: '#FFFFFF',
+                                fontSize: '0.8rem',
+                                fontWeight: 750,
+                                border: '1px solid rgba(56, 189, 248, 0.4)',
+                                cursor: 'pointer',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                gap: '6px',
+                                transition: 'background 160ms ease',
+                              }}
+                            >
+                              <Calendar size={13} /> Book Visit with {doc.name.split(' ').slice(0, 2).join(' ')}
+                            </button>
+                          </div>
+                        ))
+                      ) : (
+                        currentSpeciality.doctorsList?.map((docName: string) => (
+                          <div
+                            key={docName}
+                            style={{
+                              background: 'rgba(255, 255, 255, 0.08)',
+                              border: '1px solid rgba(255, 255, 255, 0.15)',
+                              borderRadius: '14px',
+                              padding: '12px 14px',
+                              color: '#FFFFFF',
+                            }}
+                          >
+                            <div style={{ fontSize: '0.95rem', fontWeight: 800 }}>{docName}</div>
+                            <div style={{ fontSize: '0.78rem', color: '#38BDF8', marginTop: '2px' }}>Consultant Specialist</div>
+                          </div>
+                        ))
+                      )}
+                    </div>
+                  </div>
+
+                  {/* ── 2. KEY TREATMENTS & PROCEDURES ── */}
                   {currentSpeciality.keyProcedures && currentSpeciality.keyProcedures.length > 0 && (
-                    <div style={{ marginBottom: '18px' }}>
+                    <div style={{ marginBottom: '16px' }}>
                       <div style={{ fontSize: '0.75rem', fontWeight: 750, color: '#38BDF8', textTransform: 'uppercase', marginBottom: '8px' }}>
-                        Key Treatments & Services:
+                        Key Treatments & Services Provided:
                       </div>
                       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '8px' }}>
-                        {currentSpeciality.keyProcedures.map((proc) => (
+                        {currentSpeciality.keyProcedures.map((proc: string) => (
                           <div key={proc} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                             <CheckCircle2 size={15} color="#34D399" style={{ flexShrink: 0 }} />
                             <span style={{ fontSize: '0.84rem', color: '#F1F5F9', fontWeight: 550 }}>{proc}</span>
@@ -326,9 +457,9 @@ export function Specialities() {
                     </div>
                   )}
 
-                  {/* Tags */}
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '22px' }}>
-                    {currentSpeciality.tags.map((tag) => (
+                  {/* Department Tags */}
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '16px' }}>
+                    {currentSpeciality.tags.map((tag: string) => (
                       <span
                         key={tag}
                         style={{
@@ -347,9 +478,9 @@ export function Specialities() {
                   </div>
                 </div>
 
-                {/* Bottom Booking Row */}
+                {/* Bottom Booking Action Row */}
                 <div style={{
-                  paddingTop: '16px',
+                  paddingTop: '14px',
                   borderTop: '1px solid rgba(255, 255, 255, 0.12)',
                   display: 'flex',
                   alignItems: 'center',
@@ -358,7 +489,7 @@ export function Specialities() {
                   gap: '12px',
                 }}>
                   <div style={{ fontSize: '0.825rem', color: '#CBD5E1' }}>
-                    Consultations: Mon - Sat (9 AM - 9 PM) | 24/7 Emergency
+                    Consultations: Mon - Sat (9 AM - 9 PM) · 24/7 Emergency Available
                   </div>
 
                   <button
@@ -379,7 +510,7 @@ export function Specialities() {
                       transition: 'all 160ms ease',
                     }}
                   >
-                    Book Doctor Visit <ArrowRight size={15} />
+                    Book Doctor Appointment <ArrowRight size={15} />
                   </button>
                 </div>
               </motion.div>
