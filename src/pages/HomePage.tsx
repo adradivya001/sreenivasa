@@ -4,6 +4,7 @@ import { TrustStrip } from '@/components/sections/TrustStrip';
 import { Specialities } from '@/components/sections/Specialities';
 import { Doctors } from '@/components/sections/Doctors';
 import { WhyChoose } from '@/components/sections/WhyChoose';
+import { CareBeyondVisit } from '@/components/sections/CareBeyondVisit';
 import { CareBand } from '@/components/sections/CareBand';
 import { Appointment } from '@/components/sections/Appointment';
 import { Contact } from '@/components/sections/Contact';
@@ -68,16 +69,19 @@ export function HomePage() {
       {/* 5. WHY CHOOSE SREENIVASA */}
       <WhyChoose />
 
-      {/* 6. CARE BAND RIBBON */}
+      {/* 6. CARE BEYOND VISIT (WhatsApp Simulation & Post-Care Journey) */}
+      <CareBeyondVisit />
+
+      {/* 7. CARE BAND RIBBON */}
       <CareBand />
 
-      {/* 7. APPOINTMENT FLOW */}
+      {/* 8. APPOINTMENT FLOW */}
       <Appointment />
 
-      {/* 8. LOCATION & DIRECTIONS */}
+      {/* 9. LOCATION & DIRECTIONS */}
       <Contact />
 
-      {/* 9. FAQ ACCORDION */}
+      {/* 10. FAQ ACCORDION */}
       {siteConfig.features.showFAQ && <FAQ />}
     </>
   );

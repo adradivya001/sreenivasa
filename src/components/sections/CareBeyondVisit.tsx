@@ -9,9 +9,8 @@ import {
   ShieldCheck,
   Send,
   Sparkles,
-  PhoneCall,
+  Phone,
   Heart,
-  FlaskConical,
   Stethoscope
 } from 'lucide-react';
 import { useInView, useReducedMotion } from '@/hooks';
@@ -31,30 +30,30 @@ const stages: JourneyStage[] = [
   {
     step: '01',
     title: 'FOLLOW-UP REMINDERS',
-    desc: 'Never miss an important specialist review, post-op assessment, or physician follow-up in Anantapur.',
+    desc: 'Never miss an important follow-up appointment or review for your health.',
     icon: CalendarCheck,
-    badge: 'Timely OPD Reviews',
+    badge: 'Timely Reviews',
   },
   {
     step: '02',
-    title: 'DIAGNOSTIC REPORT ACCESS',
-    desc: 'Receive digital Pathology, ECG, and X-Ray laboratory reports directly via WhatsApp as soon as they are ready.',
-    icon: FlaskConical,
-    badge: 'Fast Lab Reports',
-  },
-  {
-    step: '03',
-    title: 'MEDICATION GUIDANCE',
-    desc: 'Stay informed with structured medication schedules and recovery instructions recommended by your doctor.',
+    title: 'MEDICINE REMINDERS',
+    desc: 'Stay on track with timely reminders for your prescribed medicines.',
     icon: Pill,
     badge: 'Dosage Support',
   },
   {
+    step: '03',
+    title: 'RECOVERY GUIDANCE',
+    desc: 'Receive helpful post-care instructions and recovery guidance after your visit.',
+    icon: HeartHandshake,
+    badge: 'Care Protocol',
+  },
+  {
     step: '04',
-    title: 'DIRECT HELPDESK SUPPORT',
-    desc: 'Connect with our hospital care desk for appointment queries, billing support, and emergency medical contacts.',
+    title: 'STAY CONNECTED',
+    desc: 'Get important updates, reports, and emergency contacts directly through WhatsApp.',
     icon: MessageCircle,
-    badge: 'WhatsApp Assistance',
+    badge: 'Direct WhatsApp Support',
   },
 ];
 
@@ -62,39 +61,39 @@ const chatMessages = [
   {
     id: 1,
     type: 'incoming',
-    text: '👋 Hello! Thank you for visiting Sreenivasa Multi Speciality Hospital, Anantapur today.',
+    text: '👋 Hello! We hope you are feeling better after today’s consultation at Sreenivasa Multi Speciality Hospital.',
     time: '04:30 PM',
     tag: null,
   },
   {
     id: 2,
     type: 'incoming',
-    title: '📋 Diagnostic Lab Report Ready',
-    text: 'Your Pathology & ECG test results have been verified by the department and are ready for download.',
+    title: '🗓️ Follow-up Reminder',
+    text: 'Your follow-up appointment with our specialist is scheduled for tomorrow at 10:30 AM.',
     time: '04:31 PM',
-    tag: 'Report Delivered',
+    tag: 'Appointment Confirmed',
     accent: '#0E7490',
   },
   {
     id: 3,
     type: 'incoming',
-    title: '💊 Prescription & Dosage Schedule',
-    text: 'Please take the prescribed medication as advised by the specialist. Ensure proper hydration and rest.',
+    title: '💊 Medication Schedule',
+    text: 'Please continue the prescribed course as advised by your physician. Ensure plenty of hydration and rest.',
     time: '04:32 PM',
-    tag: 'Care Protocol',
+    tag: 'Prescription Guideline',
     accent: '#059669',
   },
   {
     id: 4,
     type: 'outgoing',
-    text: 'Received the reports! Thank you for the quick and prompt update. 🙏',
+    text: 'Thank you so much! The medication reminders and lab updates are very helpful for us. 🙏',
     time: '04:35 PM',
     tag: null,
   },
   {
     id: 5,
     type: 'incoming',
-    text: '💙 Sreenivasa Hospital — Your Health, Our Priority. For emergency help or doctor schedules, call 08554-272828.',
+    text: '💙 Sreenivasa Hospital — We’re here whenever you need us. Have any questions? Our care desk is always available.',
     time: '04:36 PM',
     tag: null,
   },
@@ -111,23 +110,25 @@ export function CareBeyondVisit() {
       className="section"
       aria-labelledby="care-beyond-heading"
       style={{
-        background: 'linear-gradient(180deg, #ECFEFF 0%, #F0F9FF 50%, #E0F2FE 100%)',
+        background: '#ECFEFF',
         position: 'relative',
         overflow: 'hidden',
-        padding: 'clamp(4rem, 7vw, 6.5rem) 0',
+        padding: 'clamp(4rem, 6vw, 6rem) 0',
+        borderBottom: '1px solid #CFFAFE',
       }}
     >
-      {/* Background Decorative Ambient Circles */}
+      {/* Background Decorative Ambient Glows */}
       <div
         aria-hidden="true"
         style={{
           position: 'absolute',
-          top: '-10%',
+          top: '10%',
           right: '-5%',
-          width: '520px',
-          height: '520px',
+          width: '500px',
+          height: '500px',
+          background: 'radial-gradient(circle, rgba(14, 116, 144, 0.08) 0%, transparent 70%)',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(14, 116, 144, 0.08) 0%, rgba(255,255,255,0) 70%)',
+          filter: 'blur(60px)',
           pointerEvents: 'none',
         }}
       />
@@ -135,167 +136,266 @@ export function CareBeyondVisit() {
         aria-hidden="true"
         style={{
           position: 'absolute',
-          bottom: '-5%',
-          left: '-5%',
-          width: '460px',
-          height: '460px',
+          bottom: '5%',
+          left: '-8%',
+          width: '550px',
+          height: '550px',
+          background: 'radial-gradient(circle, rgba(2, 132, 199, 0.06) 0%, transparent 70%)',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(2, 132, 199, 0.06) 0%, rgba(255,255,255,0) 70%)',
+          filter: 'blur(60px)',
           pointerEvents: 'none',
         }}
       />
 
-      <div className="container" style={{ maxWidth: 1320, margin: '0 auto', padding: '0 clamp(1.25rem, 3vw, 2.5rem)', position: 'relative', zIndex: 2 }}>
+      <div className="container" style={{ maxWidth: 1340, margin: '0 auto', padding: '0 clamp(1rem, 3vw, 2.5rem)', position: 'relative', zIndex: 1 }}>
         
         {/* Section Header */}
         <motion.div
           initial={rm ? false : { opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: EASE }}
-          style={{ textAlign: 'center', marginBottom: 'clamp(2.5rem, 5vw, 4.5rem)' }}
+          style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto clamp(2.5rem, 5vw, 4rem) auto' }}
         >
           <div
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: 8,
+              gap: 6,
               padding: '6px 16px',
               borderRadius: 100,
-              background: '#ECFEFF',
-              border: '1px solid #CFFAFE',
+              background: '#FFFFFF',
+              border: '1px solid #BAE6FD',
               fontSize: '0.8125rem',
-              fontWeight: 750,
+              fontWeight: 800,
               color: '#0E7490',
+              letterSpacing: '0.06em',
               marginBottom: 14,
             }}
           >
-            <Sparkles size={15} color="#0E7490" />
-            <span>CONTINUOUS POST-CONSULTATION SUPPORT</span>
+            <Sparkles size={14} color="#0E7490" />
+            <span>CARE BEYOND THE VISIT</span>
           </div>
 
           <h2
             id="care-beyond-heading"
             style={{
               fontFamily: 'Fraunces, Georgia, serif',
-              fontSize: 'clamp(2.1rem, 3.8vw, 3.2rem)',
-              fontWeight: 700,
+              fontSize: 'clamp(2.1rem, 3.8vw, 3.25rem)',
+              fontWeight: 750,
               lineHeight: 1.15,
-              letterSpacing: '-0.02em',
+              letterSpacing: '-0.025em',
               color: '#0F172A',
-              maxWidth: 780,
-              margin: '0 auto',
+              marginBottom: '1rem',
             }}
           >
-            Care Beyond the{' '}
-            <span style={{ color: '#0E7490', fontStyle: 'italic' }}>
-              Hospital Visit
-            </span>
+            Care that continues{' '}
+            <span style={{ color: '#0E7490', fontStyle: 'italic' }}>after you leave.</span>
           </h2>
 
           <p
             style={{
-              fontSize: '1.05rem',
-              color: '#64748B',
-              marginTop: '1rem',
-              maxWidth: 640,
-              margin: '1rem auto 0',
+              fontSize: 'clamp(1rem, 1.15vw, 1.125rem)',
+              color: '#475569',
               lineHeight: 1.7,
+              maxWidth: 680,
+              margin: '0 auto',
             }}
           >
-            Our care doesn’t end when you leave our premises. We provide proactive digital healthcare updates, lab report notifications, and direct hospital assistance.
+            At Sreenivasa Hospital, your care doesn’t stop when you leave our premises. From follow-up reviews and medication schedules to recovery guidance and test reports, we keep you seamlessly connected.
           </p>
         </motion.div>
 
-        {/* 2-Column Responsive Layout */}
+        {/* Main 2-Column Showcase */}
         <div
+          className="care-beyond-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(12, 1fr)',
-            gap: 'clamp(2rem, 4vw, 3.5rem)',
+            gap: 'clamp(2rem, 4vw, 3.75rem)',
             alignItems: 'center',
           }}
         >
-          {/* Left Column: 4 Journey Stage Cards */}
+          {/* ══ LEFT COLUMN: Vertical Connected Care Journey (7 Cols) ════════════ */}
           <div
             style={{
               gridColumn: 'span 7',
               display: 'flex',
               flexDirection: 'column',
-              gap: '16px',
+              gap: '1.25rem',
             }}
-            className="care-stages-col"
+            className="care-journey-col"
           >
-            {stages.map((stg, i) => {
-              const Icon = stg.icon;
-              return (
-                <motion.div
-                  key={stg.step}
-                  initial={rm ? false : { opacity: 0, x: -28 }}
-                  animate={inView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.5, delay: i * 0.1, ease: EASE }}
-                  whileHover={rm ? {} : { y: -3, boxShadow: '0 12px 28px rgba(14, 116, 144, 0.1)' }}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '18px',
-                    padding: '20px 22px',
-                    borderRadius: '20px',
-                    background: '#FFFFFF',
-                    border: '1px solid #E2E8F0',
-                    boxShadow: '0 2px 10px rgba(0,0,0,0.03)',
-                    transition: 'all 240ms ease',
-                  }}
-                >
-                  <div
+            <div style={{ position: 'relative', paddingLeft: '8px' }}>
+              {/* Vertical Connecting Line */}
+              <div
+                aria-hidden="true"
+                style={{
+                  position: 'absolute',
+                  left: '29px',
+                  top: '28px',
+                  bottom: '36px',
+                  width: '2px',
+                  background: 'linear-gradient(180deg, #0E7490 0%, #0284C7 50%, #25D366 100%)',
+                  opacity: 0.35,
+                  zIndex: 0,
+                }}
+              />
+
+              {stages.map((st, i) => {
+                const Icon = st.icon;
+                return (
+                  <motion.div
+                    key={st.step}
+                    initial={rm ? false : { opacity: 0, x: -28 }}
+                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.15 + i * 0.12, ease: EASE }}
                     style={{
-                      width: 48,
-                      height: 48,
-                      borderRadius: 14,
-                      background: '#ECFEFF',
-                      border: '1px solid #CFFAFE',
+                      position: 'relative',
+                      zIndex: 1,
                       display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flexShrink: 0,
+                      alignItems: 'flex-start',
+                      gap: '1.25rem',
+                      marginBottom: i === stages.length - 1 ? 0 : '1.35rem',
                     }}
                   >
-                    <Icon size={22} color="#0E7490" />
-                  </div>
-
-                  <div style={{ flex: 1 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
-                      <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#0E7490', letterSpacing: '0.04em' }}>
-                        STEP {stg.step}
-                      </span>
-                      <span style={{
-                        fontSize: '0.7rem', fontWeight: 700, color: '#0369A1',
-                        background: '#F0F9FF', padding: '3px 10px', borderRadius: 100,
-                        border: '1px solid #BAE6FD',
-                      }}>
-                        {stg.badge}
+                    {/* Numbered Icon Node */}
+                    <div
+                      style={{
+                        position: 'relative',
+                        width: '44px',
+                        height: '44px',
+                        borderRadius: '50%',
+                        background: '#FFFFFF',
+                        border: '2px solid #0E7490',
+                        boxShadow: '0 4px 14px rgba(14, 116, 144, 0.18)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0,
+                        color: '#0E7490',
+                        marginTop: '2px',
+                      }}
+                    >
+                      <Icon size={20} color="#0E7490" />
+                      <span
+                        style={{
+                          position: 'absolute',
+                          top: '-6px',
+                          right: '-6px',
+                          background: '#0F172A',
+                          color: '#FFFFFF',
+                          fontSize: '0.625rem',
+                          fontWeight: 800,
+                          padding: '1px 5px',
+                          borderRadius: '100px',
+                          lineHeight: 1.2,
+                          border: '1.5px solid #FFFFFF',
+                        }}
+                      >
+                        {st.step}
                       </span>
                     </div>
 
-                    <h3 style={{
-                      fontFamily: 'Inter, system-ui, sans-serif',
-                      fontSize: '1.05rem',
-                      fontWeight: 800,
-                      color: '#0F172A',
-                      margin: '0 0 4px 0',
-                    }}>
-                      {stg.title}
-                    </h3>
+                    {/* Stage Card */}
+                    <div
+                      style={{
+                        flex: 1,
+                        background: '#FFFFFF',
+                        borderRadius: '18px',
+                        padding: '1.15rem 1.4rem',
+                        border: '1px solid #CFFAFE',
+                        boxShadow: '0 4px 16px rgba(15, 23, 42, 0.04)',
+                        transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                      }}
+                    >
+                      <div
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          gap: '10px',
+                          marginBottom: '4px',
+                          flexWrap: 'wrap',
+                        }}
+                      >
+                        <h3
+                          style={{
+                            fontFamily: 'Inter, system-ui, sans-serif',
+                            fontSize: '0.9375rem',
+                            fontWeight: 800,
+                            letterSpacing: '0.04em',
+                            color: '#0F172A',
+                            margin: 0,
+                          }}
+                        >
+                          {st.title}
+                        </h3>
 
-                    <p style={{ fontSize: '0.875rem', color: '#64748B', lineHeight: 1.55, margin: 0 }}>
-                      {stg.desc}
-                    </p>
-                  </div>
-                </motion.div>
-              );
-            })}
+                        <span
+                          style={{
+                            fontSize: '0.72rem',
+                            fontWeight: 700,
+                            padding: '3px 10px',
+                            borderRadius: '100px',
+                            background: '#ECFEFF',
+                            color: '#0E7490',
+                            border: '1px solid #A5F3FC',
+                          }}
+                        >
+                          {st.badge}
+                        </span>
+                      </div>
+
+                      <p
+                        style={{
+                          fontSize: '0.875rem',
+                          color: '#64748B',
+                          lineHeight: 1.55,
+                          margin: 0,
+                        }}
+                      >
+                        {st.desc}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Bottom Quote Banner Pill */}
+            <motion.div
+              initial={rm ? false : { opacity: 0, y: 16 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.65, ease: EASE }}
+              style={{
+                marginTop: '0.75rem',
+                padding: '14px 22px',
+                borderRadius: '16px',
+                background: '#FFFFFF',
+                border: '1px solid #BAE6FD',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px',
+                boxShadow: '0 2px 10px rgba(14, 116, 144, 0.06)',
+              }}
+            >
+              <Heart size={18} color="#0E7490" fill="#0E7490" style={{ flexShrink: 0 }} />
+              <p
+                style={{
+                  fontSize: '0.9125rem',
+                  fontWeight: 650,
+                  fontStyle: 'italic',
+                  color: '#0E7490',
+                  margin: 0,
+                  lineHeight: 1.45,
+                }}
+              >
+                “Because caring for you doesn’t end at the hospital door.”
+              </p>
+            </motion.div>
           </div>
 
-          {/* Right Column: WhatsApp Interactive Smartphone Mockup */}
+          {/* ══ RIGHT COLUMN: Interactive Smartphone WhatsApp Chat Mockup (5 Cols) ══ */}
           <motion.div
             style={{
               gridColumn: 'span 5',
@@ -307,25 +407,27 @@ export function CareBeyondVisit() {
             transition={{ duration: 0.7, delay: 0.25, ease: EASE }}
             className="care-chat-col"
           >
+            {/* Outer Smartphone Shell */}
             <div
               style={{
                 width: '100%',
                 maxWidth: '380px',
-                borderRadius: '36px',
+                borderRadius: '38px',
                 padding: '12px',
                 background: '#0F172A',
                 boxShadow: '0 25px 60px -12px rgba(15, 23, 42, 0.25), 0 0 0 1px rgba(255,255,255,0.1)',
               }}
             >
-              {/* Inner Smartphone Screen */}
+              {/* Inner Screen */}
               <div
                 style={{
-                  borderRadius: '26px',
+                  borderRadius: '28px',
                   background: '#ECE5DD',
                   overflow: 'hidden',
                   display: 'flex',
                   flexDirection: 'column',
-                  minHeight: '480px',
+                  minHeight: '490px',
+                  position: 'relative',
                 }}
               >
                 {/* WhatsApp Chat Header */}
@@ -349,19 +451,51 @@ export function CareBeyondVisit() {
                       alignItems: 'center',
                       justifyContent: 'center',
                       color: '#0E7490',
+                      boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
                     }}
                   >
                     <Stethoscope size={20} />
                   </div>
                   <div style={{ flex: 1 }}>
-                    <div style={{ fontSize: '0.925rem', fontWeight: 750, lineHeight: 1.2 }}>
-                      Sreenivasa Care Desk
+                    <div style={{ fontSize: '0.925rem', fontWeight: 750, lineHeight: 1.2, display: 'flex', alignItems: 'center', gap: 5 }}>
+                      <span>Sreenivasa Hospital</span>
+                      <ShieldCheck size={14} color="#25D366" />
                     </div>
                     <div style={{ fontSize: '0.72rem', opacity: 0.85 }}>
-                      Official Healthcare Helpline · Verified
+                      Official Continued Care Support
                     </div>
                   </div>
-                  <ShieldCheck size={18} color="#25D366" />
+                  <a
+                    href={`tel:${siteConfig.contact.landline}`}
+                    aria-label="Call Hospital"
+                    style={{
+                      width: 32,
+                      height: 32,
+                      borderRadius: '50%',
+                      background: 'rgba(255,255,255,0.15)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: '#FFFFFF',
+                    }}
+                  >
+                    <Phone size={15} />
+                  </a>
+                </div>
+
+                {/* Verified Header Sub-banner */}
+                <div
+                  style={{
+                    background: '#FFF3CD',
+                    padding: '5px 12px',
+                    fontSize: '0.6875rem',
+                    color: '#664D03',
+                    textAlign: 'center',
+                    fontWeight: 650,
+                    borderBottom: '1px solid #FFE69C',
+                  }}
+                >
+                  🔒 Verified Hospital Post-Care Channel
                 </div>
 
                 {/* Messages List Container */}
@@ -391,11 +525,26 @@ export function CareBeyondVisit() {
                         }}
                       >
                         {msg.title && (
-                          <div style={{ fontSize: '0.8rem', fontWeight: 800, color: msg.accent || '#0F172A', marginBottom: '3px' }}>
-                            {msg.title}
+                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 6, marginBottom: '3px' }}>
+                            <span style={{ fontSize: '0.8rem', fontWeight: 800, color: msg.accent || '#0F172A' }}>
+                              {msg.title}
+                            </span>
+                            {msg.tag && (
+                              <span style={{
+                                fontSize: '0.625rem',
+                                fontWeight: 700,
+                                background: '#F0F9FF',
+                                color: '#0369A1',
+                                padding: '1px 6px',
+                                borderRadius: 100,
+                                border: '1px solid #BAE6FD',
+                              }}>
+                                {msg.tag}
+                              </span>
+                            )}
                           </div>
                         )}
-                        <div style={{ fontSize: '0.8rem', color: '#1E293B', lineHeight: 1.45 }}>
+                        <div style={{ fontSize: '0.78rem', color: '#1E293B', lineHeight: 1.45 }}>
                           {msg.text}
                         </div>
                         <div
@@ -438,7 +587,7 @@ export function CareBeyondVisit() {
                       color: '#94A3B8',
                     }}
                   >
-                    Type a message...
+                    Reply to Sreenivasa Care...
                   </div>
                   <div
                     style={{
@@ -461,6 +610,13 @@ export function CareBeyondVisit() {
 
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 992px) {
+          .care-journey-col { grid-column: span 12 !important; }
+          .care-chat-col { grid-column: span 12 !important; margin-top: 1.5rem; }
+        }
+      `}</style>
     </section>
   );
 }
