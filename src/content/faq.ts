@@ -25,7 +25,7 @@ export const faqs: FAQItem[] = [
     category: 'specialities',
     question: 'What doctor specialities are available at the hospital?',
     answer:
-      'We have 7 main departments: General Medicine (Fever/Sugar/BP), General Surgery, Maternity & Women’s Health (OBG), Child Health (Paediatrics), Brain & Spine (Neurosurgery), Bone & Joint (Orthopaedics), and Ear-Nose-Throat (ENT).',
+      'We have 15 key departments: General Medicine, Obst & Gynaecology, Cardiology (Heart), Pulmonology (Lungs), Gastroenterology, General & Laparoscopic Surgery, Orthopaedics & Joint Replacement, Paediatric Surgery, Maxillofacial Surgery, ENT, Neurology, Plastic Surgery, Anaesthesia & ICU, Urology, and Neurosurgery.',
   },
   {
     category: 'diagnostics',

@@ -62,9 +62,9 @@ const healthcareServices = [
   },
   {
     title: 'Doctor Checkups',
-    desc: 'Experienced specialist doctors across 7 main medical fields.',
+    desc: '20+ experienced specialist doctors across 15 medical and surgical departments.',
     icon: UserCheck,
-    badge: '7 Specialities',
+    badge: '15 Specialities',
   },
   {
     title: 'Surgery & Operations',

@@ -13,12 +13,12 @@ export const siteConfig = {
   heroLabel: 'SREENIVASA MULTI SPECIALITY HOSPITAL',
   heroHeadingLine1: 'Complete Care.',
   heroHeadingLine2: 'Trusted Doctors.',
-  heroBadges: 'Expert Doctors | 7 Specialities | In-House Lab',
+  heroBadges: '20+ Expert Doctors | 15 Specialities | In-House Lab',
   description:
-    'Sreenivasa Multi Speciality Hospital offers experienced doctor checkups, surgery care, and fast blood tests, ECG, and X-Ray diagnostics at Subash Road, Anantapur.',
+    'Sreenivasa Multi Speciality Hospital offers 20+ experienced doctors across 15 specialities, surgery care, and fast blood tests, ECG, and X-Ray diagnostics at Subash Road, Anantapur.',
 
   aboutSummary:
-    'Sreenivasa Multi Speciality Hospital is a trusted hospital in Anantapur, officially recognized by the Andhra Pradesh Directorate of Medical Education (DME AP) valid through March 2028.',
+    'Sreenivasa Multi Speciality Hospital is a trusted multi-speciality hospital in Anantapur with 20+ doctors across 15 departments, officially recognized by the Andhra Pradesh Directorate of Medical Education (DME AP) valid through March 2028.',
 
   recognition: {
     authority: 'Andhra Pradesh Directorate of Medical Education (DME AP)',
@@ -53,16 +53,16 @@ export const siteConfig = {
   },
 
   stats: [
-    { value: '7', label: 'Doctor Specialities', desc: 'Medicine, Surgery, OBG & more' },
+    { value: '15+', label: 'Speciality Departments', desc: 'Medicine, Surgery, OBG, Cardio & more' },
+    { value: '20+', label: 'Doctor Specialists', desc: 'Board-Listed MD/MS/DM/MCh Doctors' },
     { value: '2028', label: 'Govt. Recognized', desc: 'AP DME Valid Till 2028' },
     { value: '3+', label: 'Lab & Scan Services', desc: 'Blood Tests, ECG & X-Ray' },
-    { value: '100%', label: 'Patient Focus', desc: 'Caring for your family' },
   ],
 
   pillars: [
     'DME AP RECOGNIZED',
-    '7 SPECIALITY DEPARTMENTS',
-    'DIAGNOSTIC & LAB SERVICES',
+    '15 SPECIALITY DEPARTMENTS',
+    '20+ SPECIALIST DOCTORS',
     'TRUSTED HEALTHCARE IN ANANTAPUR',
   ],
 

@@ -7,8 +7,8 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 const stats = [
   {
     icon: Stethoscope,
-    title: '7 Key Specialities',
-    sub: 'Medicine, Surgery, OBG, Children, Neuro, Bone & ENT',
+    title: '15 Specialities & 20+ Doctors',
+    sub: 'Medicine, Surgery, OBG, Cardio, Neuro, Ortho & more',
     color: '#0E7490',
     bg: '#ECFEFF',
     border: '#CFFAFE',

@@ -18,7 +18,7 @@ export function DigitalHealthSection() {
   const hospitalFeatures = siteConfig.digitalCapabilities?.hospitalFeatures ?? [
     'Quick token counter and shorter waiting time',
     'SMS & WhatsApp doctor visit reminders',
-    'All 7 speciality doctor schedules ready daily',
+    'All 15 speciality doctor schedules ready daily',
     'Safe digital patient records for future visits',
   ];
 

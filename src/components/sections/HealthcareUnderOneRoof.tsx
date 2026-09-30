@@ -14,12 +14,12 @@ function scrollTo(id: string) {
 const pillars = [
   {
     title: 'Doctor Checkups',
-    desc: 'Direct checkups with specialist doctors across 7 main medical fields in one place.',
+    desc: 'Direct checkups with specialist doctors across 15 medical and surgical fields in one place.',
     icon: Users,
     color: '#0E7490',
     bg: '#ECFEFF',
     border: '#CFFAFE',
-    points: ['Fever, BP & Diabetes Doctors', 'Child & Baby Health Doctors', 'Maternity & Women’s Health', 'Brain & Spine Specialists'],
+    points: ['Fever, BP & Diabetes Doctors', 'Maternity, Gynaecology & Child Care', 'Heart, Chest & Stomach Specialists', 'Brain, Spine, Bone & Urology Care'],
   },
   {
     title: 'Blood Tests & Scans',

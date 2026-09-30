@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Stethoscope, Activity, HeartHandshake, Baby,
-  Brain, Bone, Ear, ArrowRight, CheckCircle2, ShieldCheck
+  Brain, Bone, Ear, ArrowRight, CheckCircle2, ShieldCheck, UserCheck, User
 } from 'lucide-react';
 import { specialities, Speciality } from '@/content/specialities';
 import { useInView, useReducedMotion } from '@/hooks';
 
 const iconMap: Record<string, React.ComponentType<{ size?: number; color?: string; className?: string }>> = {
-  Stethoscope, Activity, HeartHandshake, Baby, Brain, Bone, Ear,
+  Stethoscope, Activity, HeartHandshake, Baby, Brain, Bone, Ear, UserCheck, ShieldCheck,
 };
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -52,7 +52,7 @@ export function Specialities() {
             border: '1px solid #CFFAFE', color: '#0E7490', fontSize: '0.78rem',
             fontWeight: 750, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '0.75rem'
           }}>
-            <ShieldCheck size={14} color="#0E7490" /> 7 DOCTOR SPECIALITIES
+            <ShieldCheck size={14} color="#0E7490" /> 15 DOCTOR SPECIALITIES
           </div>
           <h2
             id="specialities-heading"
@@ -63,7 +63,7 @@ export function Specialities() {
               maxWidth: 760, margin: '0 auto',
             }}
           >
-            Our Medical{' '}
+            Our 15 Medical{' '}
             <span style={{
               background: 'linear-gradient(135deg, #0E7490 0%, #0284C7 100%)',
               WebkitBackgroundClip: 'text',
@@ -74,17 +74,17 @@ export function Specialities() {
           </h2>
           <p style={{
             marginTop: '12px', color: '#64748B', fontSize: '1.025rem',
-            maxWidth: 640, margin: '12px auto 0', lineHeight: 1.6
+            maxWidth: 680, margin: '12px auto 0', lineHeight: 1.6
           }}>
-            Consult experienced doctors for checkups, treatments, and surgery across 7 key departments under one roof.
+            Consult 20+ experienced doctors for checkups, treatments, and surgery across 15 recognized departments under one roof.
           </p>
         </motion.div>
 
-        {/* 7 Department Cards Grid */}
+        {/* 15 Department Cards Grid */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '20px',
+          gap: '18px',
           marginBottom: '3rem',
         }}>
           {specialities.map((spec, index) => {
@@ -96,13 +96,13 @@ export function Specialities() {
                 key={spec.slug}
                 initial={reducedMotion ? false : { opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.45, delay: index * 0.06, ease: EASE }}
+                transition={{ duration: 0.45, delay: Math.min(index * 0.04, 0.4), ease: EASE }}
                 whileHover={reducedMotion ? {} : { y: -4, boxShadow: '0 12px 30px rgba(14, 116, 144, 0.12)' }}
                 onClick={() => setSelectedSlug(spec.slug)}
                 style={{
                   background: isSelected ? 'linear-gradient(180deg, #F0FDF4 0%, #FFFFFF 100%)' : '#FFFFFF',
                   borderRadius: '20px',
-                  padding: '24px',
+                  padding: '22px',
                   border: isSelected ? '2px solid #0E7490' : '1px solid #E2E8F0',
                   boxShadow: isSelected ? '0 8px 24px rgba(14, 116, 144, 0.1)' : '0 2px 8px rgba(0,0,0,0.03)',
                   cursor: 'pointer',
@@ -114,23 +114,24 @@ export function Specialities() {
                 }}
               >
                 <div>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
                     <div style={{
-                      width: 48, height: 48, borderRadius: '14px',
+                      width: 44, height: 44, borderRadius: '12px',
                       background: isSelected ? '#0E7490' : '#ECFEFF',
                       border: isSelected ? 'none' : '1px solid #CFFAFE',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                     }}>
-                      <SpecIcon size={24} color={isSelected ? '#FFFFFF' : '#0E7490'} />
+                      <SpecIcon size={22} color={isSelected ? '#FFFFFF' : '#0E7490'} />
                     </div>
                     {spec.badge && (
                       <span style={{
-                        fontSize: '0.72rem',
+                        fontSize: '0.7rem',
                         fontWeight: 750,
-                        padding: '4px 10px',
+                        padding: '3px 9px',
                         borderRadius: '100px',
-                        background: '#F1F5F9',
-                        color: '#475569',
+                        background: isSelected ? '#ECFEFF' : '#F1F5F9',
+                        color: isSelected ? '#0E7490' : '#475569',
+                        border: isSelected ? '1px solid #CFFAFE' : 'none',
                       }}>
                         {spec.badge}
                       </span>
@@ -139,36 +140,53 @@ export function Specialities() {
 
                   <h3 style={{
                     fontFamily: 'Inter, system-ui, sans-serif',
-                    fontSize: '1.2rem',
+                    fontSize: '1.125rem',
                     fontWeight: 800,
                     color: '#0F172A',
-                    margin: '0 0 10px 0',
+                    margin: '0 0 8px 0',
                     lineHeight: 1.3,
                   }}>
                     {spec.name}
                   </h3>
 
                   <p style={{
-                    fontSize: '0.885rem',
+                    fontSize: '0.865rem',
                     color: '#64748B',
-                    lineHeight: 1.6,
-                    margin: '0 0 16px 0',
+                    lineHeight: 1.55,
+                    margin: '0 0 14px 0',
                   }}>
                     {spec.description}
                   </p>
+
+                  {spec.doctorsList && spec.doctorsList.length > 0 && (
+                    <div style={{
+                      background: '#F8FAFC',
+                      padding: '8px 10px',
+                      borderRadius: '8px',
+                      border: '1px solid #F1F5F9',
+                      marginBottom: '14px',
+                    }}>
+                      <div style={{ fontSize: '0.68rem', fontWeight: 750, color: '#0E7490', textTransform: 'uppercase', marginBottom: '3px' }}>
+                        Doctors:
+                      </div>
+                      <div style={{ fontSize: '0.78rem', color: '#1E293B', fontWeight: 600 }}>
+                        {spec.doctorsList.join(', ')}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 <div style={{
                   borderTop: '1px solid #F1F5F9',
-                  paddingTop: '14px',
+                  paddingTop: '12px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
                 }}>
-                  <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0E7490' }}>
-                    {isSelected ? 'Selected Department' : 'View Scope & Details'}
+                  <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#0E7490' }}>
+                    {isSelected ? 'Selected Department' : 'View Details & Doctors'}
                   </span>
-                  <ArrowRight size={16} color="#0E7490" />
+                  <ArrowRight size={15} color="#0E7490" />
                 </div>
               </motion.div>
             );
@@ -205,13 +223,13 @@ export function Specialities() {
                   padding: '4px 12px', borderRadius: '100px', background: 'rgba(255,255,255,0.15)',
                   fontSize: '0.75rem', fontWeight: 750, color: '#38BDF8', letterSpacing: '0.04em', textTransform: 'uppercase', marginBottom: '12px'
                 }}>
-                  <CurrentIcon size={14} color="#38BDF8" /> Department In-Depth Overview
+                  <CurrentIcon size={14} color="#38BDF8" /> Department Overview
                 </div>
 
                 <h3 style={{
                   fontSize: 'clamp(1.5rem, 2.5vw, 2.1rem)',
                   fontWeight: 800,
-                  margin: '0 0 12px 0',
+                  margin: '0 0 10px 0',
                   color: '#FFFFFF',
                 }}>
                   {currentSpeciality.name}
@@ -221,16 +239,33 @@ export function Specialities() {
                   fontSize: '0.95rem',
                   color: '#CBD5E1',
                   lineHeight: 1.7,
-                  margin: '0 0 20px 0',
+                  margin: '0 0 18px 0',
                   maxWidth: '740px',
                 }}>
                   {currentSpeciality.fullOverview || currentSpeciality.description}
                 </p>
 
+                {currentSpeciality.doctorsList && (
+                  <div style={{
+                    background: 'rgba(255, 255, 255, 0.08)',
+                    padding: '12px 16px',
+                    borderRadius: '12px',
+                    border: '1px solid rgba(255, 255, 255, 0.15)',
+                    marginBottom: '18px',
+                  }}>
+                    <div style={{ fontSize: '0.75rem', fontWeight: 750, color: '#38BDF8', textTransform: 'uppercase', marginBottom: '4px' }}>
+                      Specialist Doctors on Board:
+                    </div>
+                    <div style={{ fontSize: '0.925rem', color: '#FFFFFF', fontWeight: 700 }}>
+                      {currentSpeciality.doctorsList.join(' · ')}
+                    </div>
+                  </div>
+                )}
+
                 {currentSpeciality.keyProcedures && (
-                  <div style={{ marginBottom: '20px' }}>
-                    <div style={{ fontSize: '0.8rem', fontWeight: 750, color: '#38BDF8', textTransform: 'uppercase', marginBottom: '8px' }}>
-                      Key Clinical Focus & Services:
+                  <div style={{ marginBottom: '18px' }}>
+                    <div style={{ fontSize: '0.78rem', fontWeight: 750, color: '#38BDF8', textTransform: 'uppercase', marginBottom: '8px' }}>
+                      Key Treatments & Services:
                     </div>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '8px' }}>
                       {currentSpeciality.keyProcedures.map((proc) => (
@@ -273,7 +308,7 @@ export function Specialities() {
                   width: '100%',
                   boxSizing: 'border-box',
                 }}>
-                  <div style={{ fontSize: '0.825rem', color: '#94A3B8', marginBottom: '4px' }}>OPD Consultation</div>
+                  <div style={{ fontSize: '0.825rem', color: '#94A3B8', marginBottom: '4px' }}>Doctor OPD Consultation</div>
                   <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '12px' }}>
                     Schedule {currentSpeciality.shortName || currentSpeciality.name} Visit
                   </div>

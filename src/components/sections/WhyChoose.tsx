@@ -15,8 +15,8 @@ const whyItems = [
   {
     number: '02',
     icon: Stethoscope,
-    title: '7 Core Specialities',
-    desc: 'General Medicine, Surgery, OBG, Paediatrics, Neuro, Ortho & ENT.',
+    title: '15 Speciality Departments',
+    desc: '20+ specialist doctors across medicine, surgery, heart, neuro, ortho & more.',
     color: '#0284C7',
   },
   {

@@ -10,16 +10,16 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 const checkmarks = [
   'Recognized by AP Directorate of Medical Education (DME AP)',
   'Govt. Recognition Valid Till: 06 March 2028',
-  '7 Doctor Speciality Departments',
+  '15 Doctor Speciality Departments',
+  '20+ Board-Listed Specialist Doctors',
   'In-House Blood Test Lab, ECG & Digital X-Ray',
   'Clean Operation Rooms & Inpatient Beds',
-  'Near Iron Bridge, Subash Road, Anantapur',
 ];
 
 const pillars = [
   { icon: Award, label: 'Govt. Recognized', desc: 'Officially recognized by AP Directorate of Medical Education' },
-  { icon: Stethoscope, label: '7 Key Specialities', desc: 'Experienced doctors for checkups and treatments' },
-  { icon: Activity, label: 'Surgery & Emergency', desc: 'Safe surgeries for general, bone, nerve, and ENT care' },
+  { icon: Stethoscope, label: '15 Specialities', desc: '20+ experienced doctors for checkups and surgery' },
+  { icon: Activity, label: 'Surgery & Emergency', desc: 'Safe surgeries across general, ortho, neuro, paediatric & ENT' },
   { icon: Hospital, label: 'Modern Hospital', desc: 'Blood testing lab, doctor rooms, and recovery beds' },
 ];
 
@@ -78,11 +78,11 @@ export function About() {
             </h2>
 
             <p style={{ fontSize: '1.025rem', color: '#475569', lineHeight: 1.75, marginBottom: '1rem' }}>
-              <strong>Sreenivasa Multi Speciality Hospital</strong> was established to provide caring, high-quality, and accessible medical care to families in Anantapur. Located at <strong>Pranathi Complex near Iron Bridge on Subash Road</strong>, our hospital brings specialist doctors, surgeons, and diagnostic lab testing all under one roof.
+              <strong>Sreenivasa Multi Speciality Hospital</strong> was established to provide caring, high-quality, and accessible medical care to families in Anantapur. Located at <strong>Pranathi Complex near Iron Bridge on Subash Road</strong>, our hospital brings 20+ specialist doctors, surgeons, and diagnostic lab testing all under one roof.
             </p>
 
             <p style={{ fontSize: '0.95rem', color: '#64748B', lineHeight: 1.75, marginBottom: '1.75rem' }}>
-              Our hospital is officially recognized by the <strong>Andhra Pradesh Directorate of Medical Education (DME AP)</strong> valid through <strong>March 6, 2028</strong>. We have 7 doctor departments: <em>General Medicine (Fever/BP/Sugar), General Surgery, Maternity & Women’s Health (OBG), Child Health (Paediatrics), Brain & Spine (Neurosurgery), Bone & Joint (Orthopaedics)</em>, and <em>ENT</em>, backed by in-house blood testing and digital X-rays.
+              Our hospital is officially recognized by the <strong>Andhra Pradesh Directorate of Medical Education (DME AP)</strong> valid through <strong>March 6, 2028</strong>. We feature 15 recognized departments including General Medicine, Gynaecology & Maternity, Cardiology, Pulmonology, Gastroenterology, General & Laparoscopic Surgery, Orthopaedics & Joint Replacement, Paediatric Surgery, Maxillofacial Surgery, ENT, Neurology, Plastic Surgery, Anaesthesia & ICU, Urology, and Neurosurgery.
             </p>
 
             {/* Checkmarks Grid */}
@@ -194,8 +194,8 @@ export function About() {
               {/* Stats highlights */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px' }}>
                 <div style={{ background: '#ECFEFF', padding: '14px', borderRadius: '12px', border: '1px solid #CFFAFE' }}>
-                  <div style={{ fontSize: '1.35rem', fontWeight: 850, color: '#0E7490' }}>7 Specialities</div>
-                  <div style={{ fontSize: '0.75rem', color: '#0369A1', fontWeight: 600 }}>Doctor Departments</div>
+                  <div style={{ fontSize: '1.35rem', fontWeight: 850, color: '#0E7490' }}>15 Specialities</div>
+                  <div style={{ fontSize: '0.75rem', color: '#0369A1', fontWeight: 600 }}>20+ Doctors</div>
                 </div>
                 <div style={{ background: '#F0FDF4', padding: '14px', borderRadius: '12px', border: '1px solid #DCFCE7' }}>
                   <div style={{ fontSize: '1.35rem', fontWeight: 850, color: '#059669' }}>3 Lab & Scans</div>
@@ -220,7 +220,7 @@ export function About() {
                   textAlign: 'center',
                 }}
               >
-                View 7 Specialities →
+                View 15 Specialities →
               </a>
             </div>
           </motion.div>

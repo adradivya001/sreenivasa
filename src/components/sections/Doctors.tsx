@@ -1,7 +1,8 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   ShieldCheck, Stethoscope, ArrowRight, UserCheck,
-  Clock, Calendar, Award, Building2, User
+  Clock, Calendar, Award, Building2, User, Filter, GraduationCap
 } from 'lucide-react';
 import { doctors, Doctor } from '@/content/doctors';
 import { useInView, useReducedMotion } from '@/hooks';
@@ -13,11 +14,36 @@ function scrollTo(id: string) {
 }
 
 export function Doctors() {
+  const [selectedDept, setSelectedDept] = useState<string>('all');
   const [ref, inView] = useInView<HTMLElement>();
   const reducedMotion = useReducedMotion();
 
   const leadershipDoctor = doctors.find((d) => d.isLeadership);
   const specialistDoctors = doctors.filter((d) => !d.isLeadership);
+
+  // Department filter categories
+  const departments = [
+    { id: 'all', label: 'All Doctors', count: specialistDoctors.length },
+    { id: 'general-medicine', label: 'General Medicine', count: 2 },
+    { id: 'obstetrics-gynaecology', label: 'Obst & Gynaecology', count: 2 },
+    { id: 'cardiology', label: 'Cardiology', count: 1 },
+    { id: 'pulmonology', label: 'Pulmonology (Lungs)', count: 2 },
+    { id: 'gastroenterology', label: 'Gastroenterology', count: 2 },
+    { id: 'general-surgery', label: 'General Surgery', count: 1 },
+    { id: 'orthopaedics', label: 'Ortho & Joints', count: 2 },
+    { id: 'paediatric-surgery', label: 'Paediatric Surgery', count: 1 },
+    { id: 'maxillofacial-surgery', label: 'Maxillofacial', count: 2 },
+    { id: 'ent', label: 'ENT', count: 2 },
+    { id: 'neurology', label: 'Neurology', count: 2 },
+    { id: 'plastic-surgery', label: 'Plastic Surgery', count: 1 },
+    { id: 'anaesthesia-icu', label: 'Anaesthesia & ICU', count: 2 },
+    { id: 'urology', label: 'Urology', count: 2 },
+    { id: 'neurosurgery', label: 'Neurosurgery', count: 1 },
+  ];
+
+  const filteredDoctors = selectedDept === 'all'
+    ? specialistDoctors
+    : specialistDoctors.filter((d) => d.specialitySlug === selectedDept);
 
   return (
     <section
@@ -46,7 +72,7 @@ export function Doctors() {
             border: '1px solid #CFFAFE', color: '#0E7490', fontSize: '0.78rem',
             fontWeight: 750, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '0.75rem'
           }}>
-            <ShieldCheck size={14} color="#0E7490" /> OUR DOCTORS & LEADERSHIP
+            <ShieldCheck size={14} color="#0E7490" /> 20+ SPECIALIST DOCTORS
           </div>
 
           <h2 id="doctors-heading" style={{
@@ -66,9 +92,9 @@ export function Doctors() {
           </h2>
           <p style={{
             fontSize: '1.025rem', color: '#64748B', marginTop: '12px',
-            maxWidth: 640, margin: '12px auto 0', lineHeight: 1.6
+            maxWidth: 680, margin: '12px auto 0', lineHeight: 1.6
           }}>
-            Experienced specialist doctors providing trusted medical care for you and your family.
+            Experienced specialist doctors and surgeons providing trusted medical care across 15 hospital departments.
           </p>
         </motion.div>
 
@@ -104,7 +130,7 @@ export function Doctors() {
                   fontSize: '0.75rem', fontWeight: 750, color: '#38BDF8',
                   letterSpacing: '0.04em', textTransform: 'uppercase', marginBottom: '12px'
                 }}>
-                  <Award size={13} color="#38BDF8" /> Main Doctor / Hospital Head
+                  <Award size={13} color="#38BDF8" /> Hospital Leadership & Managing Director
                 </div>
 
                 <h3 style={{
@@ -166,10 +192,10 @@ export function Doctors() {
                   border: '1px solid rgba(255,255,255,0.15)',
                 }}>
                   <div style={{ fontSize: '0.78rem', color: '#94A3B8', marginBottom: '4px' }}>
-                    Hospital Administration
+                    Hospital Address
                   </div>
                   <div style={{ fontSize: '0.925rem', fontWeight: 750, color: '#FFFFFF', marginBottom: '12px' }}>
-                    #28-271, Near Iron Bridge, Subash Road, Anantapur
+                    Pranathi Complex, Near Iron Bridge, Subash Road, Anantapur
                   </div>
                   <button
                     onClick={() => scrollTo('appointment')}
@@ -190,7 +216,7 @@ export function Doctors() {
                       boxShadow: '0 4px 14px rgba(14, 116, 144, 0.35)',
                     }}
                   >
-                    Contact Hospital Administration <ArrowRight size={15} />
+                    Book Doctor Appointment <ArrowRight size={15} />
                   </button>
                 </div>
               </div>
@@ -198,29 +224,65 @@ export function Doctors() {
           </motion.div>
         )}
 
-        {/* ── 2. MEDICAL & SURGICAL SPECIALISTS ROSTER ─────────── */}
-        <div style={{ marginBottom: '1.5rem' }}>
-          <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0F172A', margin: '0 0 6px 0' }}>
-            Department Specialist Consultations
-          </h3>
-          <p style={{ fontSize: '0.9rem', color: '#64748B', margin: 0 }}>
-            Consult with on-duty specialist doctors across our 7 recognized clinical departments.
-          </p>
+        {/* ── 2. DEPARTMENT FILTER PILLS ─────────── */}
+        <div style={{ marginBottom: '2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px', flexWrap: 'wrap', gap: '10px' }}>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0F172A', margin: 0 }}>
+              Department Doctors ({filteredDoctors.length})
+            </h3>
+            <span style={{ fontSize: '0.825rem', color: '#64748B' }}>
+              Filter by medical speciality below:
+            </span>
+          </div>
+
+          <div style={{
+            display: 'flex',
+            gap: '8px',
+            overflowX: 'auto',
+            paddingBottom: '8px',
+            scrollbarWidth: 'thin',
+          }}>
+            {departments.map((dept) => {
+              const active = selectedDept === dept.id;
+              return (
+                <button
+                  key={dept.id}
+                  onClick={() => setSelectedDept(dept.id)}
+                  style={{
+                    padding: '8px 14px',
+                    borderRadius: '100px',
+                    fontSize: '0.825rem',
+                    fontWeight: active ? 750 : 600,
+                    color: active ? '#FFFFFF' : '#334155',
+                    background: active ? '#0E7490' : '#FFFFFF',
+                    border: active ? '1px solid #0E7490' : '1px solid #E2E8F0',
+                    cursor: 'pointer',
+                    whiteSpace: 'nowrap',
+                    boxShadow: active ? '0 4px 12px rgba(14, 116, 144, 0.2)' : 'none',
+                    transition: 'all 160ms ease',
+                  }}
+                >
+                  {dept.label}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
+        {/* ── 3. DOCTORS GRID ─────────── */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(310px, 1fr))',
           gap: '20px',
           marginBottom: '3rem',
         }}>
-          {specialistDoctors.map((doctor: Doctor, i: number) => {
+          {filteredDoctors.map((doctor: Doctor, i: number) => {
             return (
               <motion.div
                 key={doctor.slug}
                 initial={reducedMotion ? false : { opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.45, delay: i * 0.05, ease: EASE }}
+                transition={{ duration: 0.45, delay: Math.min(i * 0.04, 0.4), ease: EASE }}
                 whileHover={reducedMotion ? {} : { y: -4, boxShadow: '0 14px 32px rgba(14, 116, 144, 0.1)' }}
                 style={{
                   background: '#FFFFFF',
@@ -233,7 +295,7 @@ export function Doctors() {
                   transition: 'all 240ms ease',
                 }}
               >
-                {/* Header Strip with Speciality & Badge */}
+                {/* Header Strip with Speciality & Qualification Badge */}
                 <div style={{
                   padding: '16px 20px',
                   background: 'linear-gradient(135deg, #0F172A 0%, #164E63 100%)',
@@ -250,33 +312,31 @@ export function Doctors() {
                       letterSpacing: '0.04em',
                       color: '#38BDF8',
                     }}>
-                      Medical Specialty
-                    </span>
-                    <div style={{ fontSize: '0.9rem', fontWeight: 800, color: '#FFFFFF', marginTop: '1px' }}>
                       {doctor.speciality}
+                    </span>
+                    <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#FFFFFF', marginTop: '2px' }}>
+                      {doctor.name}
                     </div>
                   </div>
-                  <div style={{
-                    width: 34, height: 34, borderRadius: '8px',
-                    background: 'rgba(255,255,255,0.15)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  }}>
-                    <Stethoscope size={18} color="#38BDF8" />
-                  </div>
+                  {doctor.qualifications && (
+                    <span style={{
+                      fontSize: '0.72rem',
+                      fontWeight: 800,
+                      padding: '4px 8px',
+                      borderRadius: '6px',
+                      background: 'rgba(56, 189, 248, 0.2)',
+                      border: '1px solid rgba(56, 189, 248, 0.35)',
+                      color: '#BAE6FD',
+                      whiteSpace: 'nowrap',
+                    }}>
+                      {doctor.qualifications}
+                    </span>
+                  )}
                 </div>
 
                 {/* Body Content */}
                 <div style={{ padding: '20px', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                  <h4 style={{
-                    fontSize: '1.15rem',
-                    fontWeight: 800,
-                    color: '#0F172A',
-                    margin: '0 0 4px 0',
-                  }}>
-                    {doctor.name}
-                  </h4>
-
-                  <div style={{ fontSize: '0.825rem', fontWeight: 700, color: '#0E7490', marginBottom: '6px' }}>
+                  <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0E7490', marginBottom: '8px' }}>
                     {doctor.designation}
                   </div>
 
@@ -289,6 +349,15 @@ export function Doctors() {
                       <span>{doctor.opdTimings}</span>
                     </div>
                   )}
+
+                  <p style={{
+                    fontSize: '0.865rem',
+                    color: '#475569',
+                    lineHeight: 1.55,
+                    marginBottom: '14px',
+                  }}>
+                    {doctor.bio}
+                  </p>
 
                   {/* Focus Areas */}
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', marginBottom: '18px', marginTop: 'auto' }}>
@@ -324,7 +393,7 @@ export function Doctors() {
                       boxShadow: '0 4px 12px rgba(14, 116, 144, 0.2)',
                     }}
                   >
-                    <Calendar size={14} /> Book OPD Consultation
+                    <Calendar size={14} /> Book Doctor Visit
                   </button>
                 </div>
               </motion.div>
@@ -335,16 +404,17 @@ export function Doctors() {
         {/* Note on Doctor Roster */}
         <div style={{
           textAlign: 'center',
-          padding: '16px',
+          padding: '16px 20px',
           borderRadius: '14px',
-          background: '#F8FAFC',
-          border: '1px solid #E2E8F0',
-          maxWidth: '720px',
+          background: '#FFFFFF',
+          border: '1px solid #CFFAFE',
+          maxWidth: '780px',
           margin: '0 auto',
-          fontSize: '0.85rem',
-          color: '#64748B',
+          fontSize: '0.875rem',
+          color: '#475569',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.02)',
         }}>
-          💡 <strong>Hospital Consultation Note:</strong> Outpatient consultations are conducted by on-duty medical and surgical specialists. Walk-ins are welcomed during daily OPD hours (9:00 AM – 9:00 PM), or call <strong>08554-272828</strong> for direct reception assistance.
+          💡 <strong>Hospital Consultation Note:</strong> Doctor checkups run Monday to Saturday (9:00 AM – 9:00 PM) and Sunday (9:00 AM – 2:00 PM). Emergency medical and surgical care is open 24/7. Call <strong>08554-272828</strong> or <strong>+91 98498 98698</strong> for immediate doctor availability.
         </div>
 
       </div>
