@@ -402,7 +402,7 @@ export function CareBeyondVisit() {
               display: 'flex',
               justifyContent: 'center',
             }}
-            initial={rm ? false : { opacity: 0, scale: 0.94, y: 24 }}
+            initial={rm ? false : { opacity: 0, scale: 0.95, y: 30 }}
             animate={inView ? { opacity: 1, scale: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.25, ease: EASE }}
             className="care-chat-col"
@@ -410,149 +410,210 @@ export function CareBeyondVisit() {
             {/* Outer Smartphone Shell */}
             <div
               style={{
+                position: 'relative',
+                borderRadius: '32px',
+                padding: '10px',
+                background: '#FFFFFF',
+                boxShadow:
+                  '0 25px 60px -15px rgba(15, 23, 42, 0.18), 0 10px 25px rgba(14, 116, 144, 0.1), 0 0 0 1px rgba(226, 232, 240, 0.9)',
+                maxWidth: '440px',
                 width: '100%',
-                maxWidth: '380px',
-                borderRadius: '38px',
-                padding: '12px',
-                background: '#0F172A',
-                boxShadow: '0 25px 60px -12px rgba(15, 23, 42, 0.25), 0 0 0 1px rgba(255,255,255,0.1)',
+                margin: '0 auto',
               }}
             >
               {/* Inner Screen */}
               <div
                 style={{
-                  borderRadius: '28px',
-                  background: '#ECE5DD',
+                  position: 'relative',
+                  borderRadius: '24px',
                   overflow: 'hidden',
+                  background: '#ECE5DD',
                   display: 'flex',
                   flexDirection: 'column',
-                  minHeight: '490px',
-                  position: 'relative',
+                  border: '1px solid #D1D5DB',
                 }}
               >
                 {/* WhatsApp Chat Header */}
                 <div
                   style={{
                     background: '#075E54',
-                    padding: '12px 16px',
-                    color: '#FFFFFF',
+                    padding: '12px 14px',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '12px',
+                    justifyContent: 'space-between',
+                    color: '#FFFFFF',
+                    boxShadow: '0 2px 6px rgba(0, 0, 0, 0.12)',
                   }}
                 >
-                  <div
-                    style={{
-                      width: 38,
-                      height: 38,
-                      borderRadius: '50%',
-                      background: '#FFFFFF',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: '#0E7490',
-                      boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
-                    }}
-                  >
-                    <Stethoscope size={20} />
-                  </div>
-                  <div style={{ flex: 1 }}>
-                    <div style={{ fontSize: '0.925rem', fontWeight: 750, lineHeight: 1.2, display: 'flex', alignItems: 'center', gap: 5 }}>
-                      <span>Sreenivasa Hospital</span>
-                      <ShieldCheck size={14} color="#25D366" />
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    {/* Hospital Avatar */}
+                    <div
+                      style={{
+                        position: 'relative',
+                        width: '40px',
+                        height: '40px',
+                        borderRadius: '50%',
+                        background: '#FFFFFF',
+                        padding: '3px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
+                        flexShrink: 0,
+                        color: '#0E7490',
+                      }}
+                    >
+                      <Stethoscope size={22} />
+                      <span
+                        style={{
+                          position: 'absolute',
+                          bottom: 0,
+                          right: 0,
+                          width: '10px',
+                          height: '10px',
+                          borderRadius: '50%',
+                          background: '#25D366',
+                          border: '2px solid #075E54',
+                        }}
+                      />
                     </div>
-                    <div style={{ fontSize: '0.72rem', opacity: 0.85 }}>
-                      Official Continued Care Support
+
+                    <div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                        <span style={{ fontSize: '0.92rem', fontWeight: 800, color: '#FFFFFF', lineHeight: 1.2 }}>
+                          Sreenivasa Hospital
+                        </span>
+                        <ShieldCheck size={14} color="#4ADE80" />
+                      </div>
+                      <div style={{ fontSize: '0.72rem', color: '#D1FAE5', opacity: 0.9 }}>
+                        Official Continued Care Support
+                      </div>
                     </div>
                   </div>
+
                   <a
                     href={`tel:${siteConfig.contact.landline}`}
                     aria-label="Call Hospital"
                     style={{
-                      width: 32,
-                      height: 32,
+                      width: '32px',
+                      height: '32px',
                       borderRadius: '50%',
-                      background: 'rgba(255,255,255,0.15)',
+                      background: 'rgba(255, 255, 255, 0.12)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       color: '#FFFFFF',
                     }}
                   >
-                    <Phone size={15} />
+                    <Phone size={16} />
                   </a>
                 </div>
 
-                {/* Verified Header Sub-banner */}
+                {/* Sub-header Date / Security Pill */}
                 <div
                   style={{
-                    background: '#FFF3CD',
-                    padding: '5px 12px',
-                    fontSize: '0.6875rem',
-                    color: '#664D03',
                     textAlign: 'center',
-                    fontWeight: 650,
-                    borderBottom: '1px solid #FFE69C',
+                    padding: '8px 12px 4px 12px',
+                    background: 'transparent',
                   }}
                 >
-                  🔒 Verified Hospital Post-Care Channel
+                  <span
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '4px',
+                      fontSize: '0.68rem',
+                      fontWeight: 700,
+                      color: '#4B5563',
+                      background: 'rgba(255, 255, 255, 0.85)',
+                      backdropFilter: 'blur(4px)',
+                      padding: '3px 10px',
+                      borderRadius: '100px',
+                      boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
+                    }}
+                  >
+                    🔒 Verified Hospital Post-Care Channel
+                  </span>
                 </div>
 
-                {/* Messages List Container */}
+                {/* WhatsApp Messages Scrollable Area */}
                 <div
                   style={{
-                    padding: '14px',
+                    padding: '12px 14px 16px 14px',
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '10px',
-                    flex: 1,
-                    overflowY: 'auto',
+                    gap: '12px',
+                    background: 'radial-gradient(circle at center, #F5F1EB 0%, #E8E0D7 100%)',
                   }}
                 >
-                  {chatMessages.map((msg) => {
-                    const isOut = msg.type === 'outgoing';
+                  {chatMessages.map((msg, idx) => {
+                    const isIncoming = msg.type === 'incoming';
                     return (
-                      <div
+                      <motion.div
                         key={msg.id}
+                        initial={rm ? false : { opacity: 0, y: 12, scale: 0.96 }}
+                        animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+                        transition={{ duration: 0.4, delay: 0.35 + idx * 0.12, ease: EASE }}
                         style={{
-                          alignSelf: isOut ? 'flex-end' : 'flex-start',
-                          maxWidth: '85%',
-                          background: isOut ? '#DCF8C6' : '#FFFFFF',
-                          borderRadius: isOut ? '14px 14px 2px 14px' : '14px 14px 14px 2px',
-                          padding: '10px 12px',
-                          boxShadow: '0 1px 3px rgba(0,0,0,0.12)',
+                          alignSelf: isIncoming ? 'flex-start' : 'flex-end',
+                          maxWidth: '88%',
+                          background: isIncoming ? '#FFFFFF' : '#DCF8C6',
+                          borderRadius: isIncoming ? '14px 14px 14px 2px' : '14px 14px 2px 14px',
+                          padding: '11px 13px 7px 13px',
+                          boxShadow: '0 1.5px 4px rgba(0, 0, 0, 0.08)',
                           position: 'relative',
                         }}
                       >
+                        {/* Optional Card Title & Tag */}
                         {msg.title && (
-                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 6, marginBottom: '3px' }}>
-                            <span style={{ fontSize: '0.8rem', fontWeight: 800, color: msg.accent || '#0F172A' }}>
+                          <div
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'space-between',
+                              gap: '6px',
+                              marginBottom: '5px',
+                              borderBottom: '1px solid rgba(0,0,0,0.06)',
+                              paddingBottom: '4px',
+                            }}
+                          >
+                            <span
+                              style={{
+                                fontSize: '0.82rem',
+                                fontWeight: 800,
+                                color: msg.accent || '#0E7490',
+                              }}
+                            >
                               {msg.title}
                             </span>
                             {msg.tag && (
-                              <span style={{
-                                fontSize: '0.625rem',
-                                fontWeight: 700,
-                                background: '#F0F9FF',
-                                color: '#0369A1',
-                                padding: '1px 6px',
-                                borderRadius: 100,
-                                border: '1px solid #BAE6FD',
-                              }}>
+                              <span
+                                style={{
+                                  fontSize: '0.625rem',
+                                  fontWeight: 700,
+                                  color: '#0369A1',
+                                  background: '#F0F9FF',
+                                  padding: '1px 6px',
+                                  borderRadius: '100px',
+                                  border: '1px solid #BAE6FD',
+                                }}
+                              >
                                 {msg.tag}
                               </span>
                             )}
                           </div>
                         )}
-                        <div style={{ fontSize: '0.78rem', color: '#1E293B', lineHeight: 1.45 }}>
+
+                        <div style={{ fontSize: '0.8125rem', color: '#1E293B', lineHeight: 1.48 }}>
                           {msg.text}
                         </div>
+
                         <div
                           style={{
                             fontSize: '0.65rem',
                             color: '#64748B',
                             textAlign: 'right',
-                            marginTop: '4px',
+                            marginTop: '5px',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'flex-end',
@@ -560,45 +621,48 @@ export function CareBeyondVisit() {
                           }}
                         >
                           <span>{msg.time}</span>
-                          {isOut && <CheckCheck size={13} color="#34B7F1" />}
+                          {!isIncoming && <CheckCheck size={13} color="#34B7F1" />}
                         </div>
-                      </div>
+                      </motion.div>
                     );
                   })}
                 </div>
 
-                {/* WhatsApp Chat Bottom Input Mockup */}
+                {/* WhatsApp Chat Bottom Input Bar */}
                 <div
                   style={{
-                    background: '#F0F0F0',
+                    background: '#F0F2F5',
                     padding: '10px 14px',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '8px',
+                    borderTop: '1px solid #E5E7EB',
                   }}
                 >
                   <div
                     style={{
                       flex: 1,
                       background: '#FFFFFF',
-                      borderRadius: '20px',
-                      padding: '8px 14px',
-                      fontSize: '0.78rem',
+                      borderRadius: '24px',
+                      padding: '9px 16px',
+                      fontSize: '0.8125rem',
                       color: '#94A3B8',
+                      border: '1px solid #E2E8F0',
                     }}
                   >
                     Reply to Sreenivasa Care...
                   </div>
                   <div
                     style={{
-                      width: 32,
-                      height: 32,
+                      width: '36px',
+                      height: '36px',
                       borderRadius: '50%',
                       background: '#075E54',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       color: '#FFFFFF',
+                      boxShadow: '0 2px 6px rgba(7, 94, 84, 0.3)',
                     }}
                   >
                     <Send size={15} />
