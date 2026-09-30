@@ -76,7 +76,7 @@ export function Footer() {
           {/* 7 Specialities */}
           <div>
             <h3 style={{ fontSize: '1rem', fontWeight: 750, marginBottom: '1rem', color: '#FFFFFF' }}>
-              Recognized Specialities
+              Doctor Specialities
             </h3>
             <ul style={{ display: 'flex', flexDirection: 'column', gap: 8, listStyle: 'none', padding: 0, margin: 0 }}>
               {specialities.map((spec) => (
@@ -95,32 +95,32 @@ export function Footer() {
           {/* Diagnostics & Facilities */}
           <div>
             <h3 style={{ fontSize: '1rem', fontWeight: 750, marginBottom: '1rem', color: '#FFFFFF' }}>
-              Diagnostic Facilities
+              Lab & Scan Services
             </h3>
             <ul style={{ display: 'flex', flexDirection: 'column', gap: 8, listStyle: 'none', padding: 0, margin: 0 }}>
               <li>
                 <a href="/#services" style={{ color: '#94A3B8', fontSize: '0.875rem', textDecoration: 'none' }}>
-                  Pathology & Clinical Lab
+                  Blood Testing Lab
                 </a>
               </li>
               <li>
                 <a href="/#services" style={{ color: '#94A3B8', fontSize: '0.875rem', textDecoration: 'none' }}>
-                  ECG Cardiac Testing
+                  ECG Heart Check
                 </a>
               </li>
               <li>
                 <a href="/#services" style={{ color: '#94A3B8', fontSize: '0.875rem', textDecoration: 'none' }}>
-                  Digital X-Ray Radiography
+                  Digital X-Ray
                 </a>
               </li>
               <li>
                 <a href="/#appointment" style={{ color: '#94A3B8', fontSize: '0.875rem', textDecoration: 'none' }}>
-                  Outpatient OPD Schedule
+                  Doctor OPD Timings
                 </a>
               </li>
               <li>
                 <a href="/#services" style={{ color: '#94A3B8', fontSize: '0.875rem', textDecoration: 'none' }}>
-                  Surgical & Operative Care
+                  Surgery & Operations
                 </a>
               </li>
             </ul>

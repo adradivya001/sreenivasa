@@ -42,7 +42,7 @@ export function FAQ() {
             border: '1px solid #CFFAFE', color: '#0E7490', fontSize: '0.78rem',
             fontWeight: 750, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '0.75rem'
           }}>
-            <HelpCircle size={14} color="#0E7490" /> FREQUENTLY ASKED QUESTIONS
+            <HelpCircle size={14} color="#0E7490" /> COMMON QUESTIONS
           </div>
           <h2 id="faq-heading" style={{
             fontFamily: 'Inter, system-ui, sans-serif',
@@ -62,7 +62,7 @@ export function FAQ() {
             marginTop: '10px', color: '#64748B', fontSize: '1rem',
             maxWidth: 600, margin: '10px auto 0', lineHeight: 1.6
           }}>
-            Find quick answers about hospital departments, diagnostic services, government DME recognition, and appointment booking.
+            Quick answers about our doctors, blood tests, X-rays, govt. recognition, and booking visits.
           </p>
         </motion.div>
 

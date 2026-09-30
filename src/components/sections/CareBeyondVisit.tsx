@@ -29,31 +29,31 @@ interface JourneyStage {
 const stages: JourneyStage[] = [
   {
     step: '01',
-    title: 'FOLLOW-UP REMINDERS',
-    desc: 'Never miss an important follow-up appointment or review for your health.',
+    title: 'CHECKUP REMINDERS',
+    desc: 'Never miss an important follow-up appointment with your doctor.',
     icon: CalendarCheck,
-    badge: 'Timely Reviews',
+    badge: 'Doctor Reviews',
   },
   {
     step: '02',
     title: 'MEDICINE REMINDERS',
-    desc: 'Stay on track with timely reminders for your prescribed medicines.',
+    desc: 'Stay on track with simple reminders for your prescribed medicines.',
     icon: Pill,
-    badge: 'Dosage Support',
+    badge: 'Daily Dosage',
   },
   {
     step: '03',
-    title: 'RECOVERY GUIDANCE',
-    desc: 'Receive helpful post-care instructions and recovery guidance after your visit.',
+    title: 'RECOVERY TIPS',
+    desc: 'Receive easy post-visit care tips and instructions to heal quickly.',
     icon: HeartHandshake,
-    badge: 'Care Protocol',
+    badge: 'Health Advice',
   },
   {
     step: '04',
-    title: 'STAY CONNECTED',
-    desc: 'Get important updates, reports, and emergency contacts directly through WhatsApp.',
+    title: 'WHATSAPP UPDATES',
+    desc: 'Get your lab reports and ask questions directly on WhatsApp.',
     icon: MessageCircle,
-    badge: 'Direct WhatsApp Support',
+    badge: 'WhatsApp Help',
   },
 ];
 
@@ -61,39 +61,39 @@ const chatMessages = [
   {
     id: 1,
     type: 'incoming',
-    text: '👋 Hello! We hope you are feeling better after today’s consultation at Sreenivasa Multi Speciality Hospital.',
+    text: '👋 Hello! We hope you are feeling better after today’s doctor visit at Sreenivasa Hospital.',
     time: '04:30 PM',
     tag: null,
   },
   {
     id: 2,
     type: 'incoming',
-    title: '🗓️ Follow-up Reminder',
-    text: 'Your follow-up appointment with our specialist is scheduled for tomorrow at 10:30 AM.',
+    title: '🗓️ Doctor Visit Reminder',
+    text: 'Your next checkup with our doctor is scheduled for tomorrow at 10:30 AM.',
     time: '04:31 PM',
-    tag: 'Appointment Confirmed',
+    tag: 'Visit Confirmed',
     accent: '#0E7490',
   },
   {
     id: 3,
     type: 'incoming',
-    title: '💊 Medication Schedule',
-    text: 'Please continue the prescribed course as advised by your physician. Ensure plenty of hydration and rest.',
+    title: '💊 Medicine Reminder',
+    text: 'Please take your medicines on time as advised by your doctor. Drink plenty of water and take good rest.',
     time: '04:32 PM',
-    tag: 'Prescription Guideline',
+    tag: 'Medicine Tips',
     accent: '#059669',
   },
   {
     id: 4,
     type: 'outgoing',
-    text: 'Thank you so much! The medication reminders and lab updates are very helpful for us. 🙏',
+    text: 'Thank you so much! The medicine reminders and lab test updates are very helpful for us. 🙏',
     time: '04:35 PM',
     tag: null,
   },
   {
     id: 5,
     type: 'incoming',
-    text: '💙 Sreenivasa Hospital — We’re here whenever you need us. Have any questions? Our care desk is always available.',
+    text: '💙 Sreenivasa Hospital — We are always here for you. If you need any help, message us anytime.',
     time: '04:36 PM',
     tag: null,
   },
@@ -196,12 +196,12 @@ export function CareBeyondVisit() {
             style={{
               fontSize: 'clamp(1rem, 1.15vw, 1.125rem)',
               color: '#475569',
-              lineHeight: 1.7,
+              lineHeight: 1.65,
               maxWidth: 680,
               margin: '0 auto',
             }}
           >
-            At Sreenivasa Hospital, your care doesn’t stop when you leave our premises. From follow-up reviews and medication schedules to recovery guidance and test reports, we keep you seamlessly connected.
+            We help you and your family stay on track with doctor reviews, medicine reminders, and fast lab reports on WhatsApp.
           </p>
         </motion.div>
 

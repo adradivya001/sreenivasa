@@ -36,7 +36,7 @@ export function Contact() {
             border: '1px solid #CFFAFE', color: '#0E7490', fontSize: '0.78rem',
             fontWeight: 750, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '0.75rem'
           }}>
-            <MapPin size={14} color="#0E7490" /> LOCATION & CONTACT
+            <MapPin size={14} color="#0E7490" /> HOSPITAL LOCATION
           </div>
           <h2
             id="contact-heading"
@@ -47,20 +47,20 @@ export function Contact() {
               maxWidth: 680, margin: '0 auto',
             }}
           >
-            Find Us in{' '}
+            Visit Our{' '}
             <span style={{
               background: 'linear-gradient(135deg, #0E7490 0%, #0284C7 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             }}>
-              Anantapur
+              Hospital
             </span>
           </h2>
           <p style={{
             marginTop: '12px', color: '#64748B', fontSize: '1.025rem',
-            maxWidth: 600, margin: '12px auto 0', lineHeight: 1.65
+            maxWidth: 600, margin: '12px auto 0', lineHeight: 1.6
           }}>
-            Centrally located near Iron Bridge on Subash Road with easy transit and landmark accessibility.
+            Easy to reach at Pranathi Complex, Near Iron Bridge on Subash Road, Anantapur.
           </p>
         </motion.div>
 

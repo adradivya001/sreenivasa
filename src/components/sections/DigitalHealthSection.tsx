@@ -10,16 +10,16 @@ export function DigitalHealthSection() {
   const reducedMotion = useReducedMotion();
 
   const patientFeatures = siteConfig.digitalCapabilities?.patientFeatures ?? [
-    'Instant OPD & Specialist Doctor Appointment Booking',
-    'Digital Pathology, ECG & X-Ray Reports Delivery',
-    'Prescription & Medication Schedule Access',
-    'Direct WhatsApp Hospital Helpdesk & Inquiry Support',
+    'Book doctor appointments online in 1 minute',
+    'Get blood test, ECG & X-ray reports on your phone',
+    'View doctor advice and medicine reminders',
+    'Direct WhatsApp hospital helpdesk for all questions',
   ];
   const hospitalFeatures = siteConfig.digitalCapabilities?.hospitalFeatures ?? [
-    'Real-time OPD Token & Patient Queue Management',
-    'Automated SMS & WhatsApp Consultation Reminders',
-    'Unified Multi-Speciality Doctor Scheduling System',
-    'Secure Digital Medical Records & Archive Workflow',
+    'Quick token counter and shorter waiting time',
+    'SMS & WhatsApp doctor visit reminders',
+    'All 7 speciality doctor schedules ready daily',
+    'Safe digital patient records for future visits',
   ];
 
   return (
@@ -58,14 +58,14 @@ export function DigitalHealthSection() {
             }}
           >
             <Sparkles size={14} color="#0E7490" />
-            <span>DIGITAL HEALTHCARE ECOSYSTEM</span>
+            <span>SMART HOSPITAL SERVICES</span>
           </div>
 
           <h2
             style={{
-              fontFamily: 'Fraunces, Georgia, serif',
+              fontFamily: 'Inter, system-ui, sans-serif',
               fontSize: 'clamp(2.1rem, 3.8vw, 3.2rem)',
-              fontWeight: 700,
+              fontWeight: 850,
               lineHeight: 1.15,
               letterSpacing: '-0.02em',
               color: '#0F172A',
@@ -73,13 +73,17 @@ export function DigitalHealthSection() {
               margin: '0 auto',
             }}
           >
-            Seamless Digital Healthcare for{' '}
-            <span style={{ color: '#0E7490', fontStyle: 'italic' }}>
-              Patients & Clinical Operations
+            Easy Digital Care for{' '}
+            <span style={{
+              background: 'linear-gradient(135deg, #0E7490 0%, #0284C7 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}>
+              Patients & Families
             </span>
           </h2>
           <p style={{ marginTop: 12, color: '#64748B', fontSize: '1.025rem', maxWidth: 650, margin: '12px auto 0', lineHeight: 1.65 }}>
-            Connecting patients with instant OPD scheduling while providing hospital administrators with modern digital clinic management.
+            Book appointments in seconds, get lab reports on your phone, and receive helpful reminders for your next checkup.
           </p>
         </motion.div>
 
@@ -114,10 +118,10 @@ export function DigitalHealthSection() {
                 <Smartphone size={26} />
               </div>
               <div>
-                <h3 style={{ fontFamily: 'Fraunces, Georgia, serif', fontSize: '1.3rem', fontWeight: 700, color: '#0F172A', margin: 0 }}>
-                  Patient & Family Features
+                <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#0F172A', margin: 0 }}>
+                  For Patients & Families
                 </h3>
-                <span style={{ fontSize: '0.8125rem', color: '#64748B', fontWeight: 500 }}>Convenient Access on your Smartphone</span>
+                <span style={{ fontSize: '0.8125rem', color: '#64748B', fontWeight: 550 }}>Easy to use on your smartphone</span>
               </div>
             </div>
 
@@ -161,10 +165,10 @@ export function DigitalHealthSection() {
                 <BarChart3 size={26} />
               </div>
               <div>
-                <h3 style={{ fontFamily: 'Fraunces, Georgia, serif', fontSize: '1.3rem', fontWeight: 700, color: '#0F172A', margin: 0 }}>
-                  Hospital Management Suite
+                <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#0F172A', margin: 0 }}>
+                  Hospital Care System
                 </h3>
-                <span style={{ fontSize: '0.8125rem', color: '#64748B', fontWeight: 500 }}>Automated OPD & Clinical Operations</span>
+                <span style={{ fontSize: '0.8125rem', color: '#64748B', fontWeight: 550 }}>Fast token flow & short wait times</span>
               </div>
             </div>
 

@@ -143,9 +143,9 @@ export function Appointment() {
                 marginBottom: '1rem',
               }}
             >
-              Take the Next Step Towards{' '}
+              Book Your{' '}
               <span style={{ color: 'var(--primary)', fontStyle: 'italic' }}>
-                Better Healthcare
+                Doctor Visit
               </span>
             </h2>
 
@@ -153,24 +153,23 @@ export function Appointment() {
               style={{
                 fontSize: '1rem',
                 color: 'var(--text-muted)',
-                lineHeight: 1.7,
+                lineHeight: 1.6,
                 marginBottom: '2rem',
                 maxWidth: 400,
               }}
             >
-              Fill the form or call us directly. We'll confirm your appointment details
-              personally.
+              Fill the quick form below or call us. Our hospital team will confirm your doctor timing.
             </p>
 
             <a
-              href={`tel:${siteConfig.contact.phone}`}
+              href={`tel:${siteConfig.contact.landline}`}
               onClick={() => trackEvent('cta_call_click')}
               className="btn btn-primary"
               id="appointment-call-btn"
               style={{ width: 'fit-content' }}
             >
               <Phone size={18} />
-              Call {siteConfig.contact.phoneDisplay}
+              Call {siteConfig.contact.landlineDisplay}
             </a>
 
             <div
@@ -182,10 +181,8 @@ export function Appointment() {
                 border: '1px solid var(--border)',
               }}
             >
-              <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
-                <strong style={{ color: 'var(--text)' }}>Note:</strong> This is an appointment
-                request, not an instant booking. The hospital will contact you to confirm. Please
-                don't include detailed medical information in the form.
+              <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', lineHeight: 1.6, margin: 0 }}>
+                <strong style={{ color: 'var(--text)' }}>Quick Note:</strong> Our hospital staff will call you to confirm your doctor appointment time.
               </p>
             </div>
           </motion.div>

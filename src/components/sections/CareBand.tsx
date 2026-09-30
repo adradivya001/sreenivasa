@@ -70,7 +70,7 @@ export function CareBand() {
             }}
           >
             <ShieldCheck size={16} color="#A5F3FC" />
-            <span>AP DME RECOGNIZED CLINICAL CARE</span>
+            <span>GOVERNMENT RECOGNIZED HOSPITAL</span>
           </div>
 
           <blockquote
@@ -84,7 +84,7 @@ export function CareBand() {
               fontStyle: 'italic',
             }}
           >
-            “Delivering trusted multi-speciality clinical expertise and compassionate care to every family in Anantapur.”
+            “Dedicated to caring for every patient with kindness, respect, and trust.”
           </blockquote>
 
           <p
@@ -97,7 +97,7 @@ export function CareBand() {
               margin: '0 auto 2.25rem auto',
             }}
           >
-            From outpatient specialist consultations and accurate laboratory diagnostics to advanced surgical procedures, we stand committed to patient recovery and well-being.
+            From doctor checkups and lab tests to surgery and emergency care, we are here to help you and your family get better.
           </p>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, justifyContent: 'center', alignItems: 'center' }}>

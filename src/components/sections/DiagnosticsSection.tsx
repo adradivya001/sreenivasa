@@ -14,63 +14,63 @@ function scrollTo(id: string) {
 const diagnosticServices = [
   {
     id: 'pathology',
-    title: 'Pathology & Laboratory Investigations',
-    desc: 'Clinical biochemistry, hematology, routine urine & blood testing, infection markers, and essential diagnostic investigations.',
-    badge: 'Clinical Laboratory',
+    title: 'Blood Tests & Lab Tests',
+    desc: 'Routine blood tests, fever tests, sugar checks, liver & kidney tests, and urine tests with fast reports.',
+    badge: 'In-House Lab',
     icon: FlaskConical,
     color: '#0E7490',
     bg: '#ECFEFF',
     border: '#CFFAFE',
-    features: ['Routine & Comprehensive Blood Tests', 'Lipid, Liver & Kidney Function Profiles', 'Infectious Disease & Fever Panels', 'Rapid Test Report Turnaround'],
+    features: ['Daily Routine Blood Tests', 'Sugar, BP & Cholesterol Tests', 'Fever & Infection Tests', 'Fast Test Report Delivery'],
   },
   {
     id: 'ecg',
-    title: 'ECG (Electrocardiogram)',
-    desc: 'Non-invasive electrocardiogram recording for accurate cardiac rhythm evaluation, arrhythmia screening, and pre-operative cardiac assessment.',
-    badge: 'Cardiac Assessment',
+    title: 'ECG Heart Check',
+    desc: 'Quick heart test to check heart beat, rhythm, and safety before surgery.',
+    badge: 'Heart Check',
     icon: Activity,
     color: '#E11D48',
     bg: '#FFF1F2',
     border: '#FFE4E6',
-    features: ['12-Lead Diagnostic ECG Recording', 'Immediate Rhythm Analysis', 'Pre-Surgical Cardiac Screening', 'Cardiologist Consultation Assistance'],
+    features: ['12-Lead Quick ECG', 'Heart Rhythm Check', 'Pre-Surgery Heart Check', 'Doctor Review Support'],
   },
   {
     id: 'xray',
-    title: 'Digital X-Ray Imaging',
-    desc: 'High-clarity digital radiography for evaluating bone fractures, joint trauma, chest infections, spine conditions, and skeletal alignment.',
-    badge: 'Digital Imaging',
+    title: 'Digital X-Ray Scans',
+    desc: 'Clear digital pictures for broken bones, fractures, joint pain, and chest checkups.',
+    badge: 'Digital X-Ray',
     icon: Scan,
     color: '#0284C7',
     bg: '#F0F9FF',
     border: '#E0F2FE',
-    features: ['High-Resolution Digital Radiography', 'Orthopaedic & Bone Fracture Imaging', 'Chest & Pulmonary Diagnostic Scans', 'Low-Dose Radiation Safety Protocols'],
+    features: ['Clear Digital X-Ray Pictures', 'Bone Fracture & Joint Scans', 'Chest & Cough Scans', 'Safe Low-Dose Scans'],
   },
 ];
 
 const healthcareServices = [
   {
     title: 'Emergency Care',
-    desc: 'Immediate medical attention and prompt clinical evaluation for urgent healthcare needs and medical emergencies.',
+    desc: 'Quick medical help and doctor attention for urgent health needs.',
     icon: ShieldAlert,
-    badge: 'Prompt Attention',
+    badge: '24/7 Available',
   },
   {
-    title: 'Diagnostic Services',
-    desc: 'In-house Pathology, ECG, and Digital X-Ray services for fast and accurate clinical results.',
+    title: 'Lab & Scan Services',
+    desc: 'In-house blood testing, ECG heart checks, and digital X-Rays with fast results.',
     icon: FlaskConical,
-    badge: 'In-House Testing',
+    badge: 'Fast Results',
   },
   {
-    title: 'Outpatient Consultation',
-    desc: 'Comprehensive OPD evaluation across 7 core medical and surgical specialties.',
+    title: 'Doctor Checkups',
+    desc: 'Experienced specialist doctors across 7 main medical fields.',
     icon: UserCheck,
     badge: '7 Specialities',
   },
   {
-    title: 'Surgical Care',
-    desc: 'Surgical evaluation and operative treatment through the hospital’s dedicated surgical specialties.',
+    title: 'Surgery & Operations',
+    desc: 'Safe surgeries and caring recovery for general, bone, spine, and ENT conditions.',
     icon: HeartPulse,
-    badge: 'Operative Support',
+    badge: 'Expert Surgeons',
   },
 ];
 
@@ -105,7 +105,7 @@ export function DiagnosticsSection() {
             border: '1px solid #CFFAFE', color: '#0E7490', fontSize: '0.78rem',
             fontWeight: 750, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '0.75rem'
           }}>
-            <Activity size={14} color="#0E7490" /> HEALTHCARE & DIAGNOSTIC SERVICES
+            <Activity size={14} color="#0E7490" /> LAB & SCAN SERVICES
           </div>
           <h2
             id="services-heading"
@@ -116,20 +116,20 @@ export function DiagnosticsSection() {
               maxWidth: 760, margin: '0 auto',
             }}
           >
-            Diagnostic & Healthcare{' '}
+            Lab Tests &{' '}
             <span style={{
               background: 'linear-gradient(135deg, #0E7490 0%, #0284C7 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             }}>
-              Support Services
+              Scan Services
             </span>
           </h2>
           <p style={{
             marginTop: '12px', color: '#64748B', fontSize: '1.025rem',
             maxWidth: 680, margin: '12px auto 0', lineHeight: 1.7
           }}>
-            Integrated on-site diagnostic testing to ensure precise clinical decision-making, rapid reports, and seamless outpatient and surgical care.
+            In-house blood tests, ECG heart checks, and digital X-Ray scans for fast results and doctor checkups.
           </p>
         </motion.div>
 
@@ -192,7 +192,7 @@ export function DiagnosticsSection() {
 
                   <div style={{ borderTop: '1px solid #F1F5F9', paddingTop: '16px', marginBottom: '16px' }}>
                     <div style={{ fontSize: '0.78rem', fontWeight: 750, color: '#0F172A', textTransform: 'uppercase', marginBottom: '10px' }}>
-                      Diagnostic Capabilities:
+                      Tests Available:
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                       {diag.features.map((feat) => (
@@ -220,7 +220,7 @@ export function DiagnosticsSection() {
                       display: 'flex', alignItems: 'center', gap: '4px'
                     }}
                   >
-                    Inquire Test <ArrowRight size={14} />
+                    Book Test <ArrowRight size={14} />
                   </button>
                 </div>
               </motion.div>
@@ -238,10 +238,10 @@ export function DiagnosticsSection() {
         }}>
           <div style={{ marginBottom: '1.5rem', textAlign: 'center' }}>
             <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#0F172A', margin: '0 0 6px 0' }}>
-              Comprehensive Healthcare Services
+              Complete Hospital Services
             </h3>
             <p style={{ fontSize: '0.9rem', color: '#64748B', margin: 0 }}>
-              End-to-end medical, surgical, diagnostic, and emergency evaluation under one roof.
+              Doctor checkups, blood tests, X-Rays, surgeries, and emergency help all in one hospital.
             </p>
           </div>
 

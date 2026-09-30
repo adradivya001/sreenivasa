@@ -46,7 +46,7 @@ export function Doctors() {
             border: '1px solid #CFFAFE', color: '#0E7490', fontSize: '0.78rem',
             fontWeight: 750, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '0.75rem'
           }}>
-            <ShieldCheck size={14} color="#0E7490" /> HOSPITAL LEADERSHIP & SPECIALISTS
+            <ShieldCheck size={14} color="#0E7490" /> OUR DOCTORS & LEADERSHIP
           </div>
 
           <h2 id="doctors-heading" style={{
@@ -61,14 +61,14 @@ export function Doctors() {
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             }}>
-              Specialists & Leadership
+              Doctors
             </span>
           </h2>
           <p style={{
             fontSize: '1.025rem', color: '#64748B', marginTop: '12px',
-            maxWidth: 640, margin: '12px auto 0', lineHeight: 1.65
+            maxWidth: 640, margin: '12px auto 0', lineHeight: 1.6
           }}>
-            Dedicated clinical leadership and experienced medical professionals providing specialized care across multiple disciplines.
+            Experienced specialist doctors providing trusted medical care for you and your family.
           </p>
         </motion.div>
 

@@ -31,14 +31,14 @@ const itemVariants = {
 
 /* Verified Specialty & Diagnostic Ticker Items */
 const tickerSpecialties = [
-  'General Medicine & Adult Primary Health',
-  'General & Minimally Invasive Surgery',
-  'Obstetrics & Comprehensive Women Care',
-  'Paediatric & Newborn Healthcare',
-  'Neurosurgery & Spine Disorder Clinic',
-  'Orthopaedics, Joint & Fracture Management',
-  'ENT (Ear, Nose, Throat & Sinus) Clinic',
-  'On-Site Diagnostic Testing: Pathology · ECG · X-Ray',
+  'General Medicine (Fever, BP & Diabetes)',
+  'General Surgery & Laparoscopy',
+  'Women’s Health & Maternity (OBG)',
+  'Child & Newborn Health (Paediatrics)',
+  'Brain & Spine Care (Neurosurgery)',
+  'Bone & Joint Care (Orthopaedics)',
+  'Ear, Nose & Throat Clinic (ENT)',
+  'Lab Tests: Blood Tests · ECG · X-Ray',
 ];
 
 export function Hero() {
@@ -177,7 +177,7 @@ export function Hero() {
                 letterSpacing: '0.07em',
                 textTransform: 'uppercase',
               }}>
-                {siteConfig.heroLabel}
+                SREENIVASA HOSPITAL · ANANTAPUR
               </span>
             </motion.div>
 
@@ -194,14 +194,14 @@ export function Hero() {
                 margin: '0 0 1rem 0',
               }}
             >
-              Comprehensive Healthcare.{' '}
+              Complete Healthcare.{' '}
               <span style={{
                 background: 'linear-gradient(135deg, #0E7490 0%, #0284C7 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 display: 'inline-block',
               }}>
-                Trusted Medical Care.
+                Trusted Doctors.
               </span>
             </motion.h1>
 
@@ -221,7 +221,7 @@ export function Hero() {
                 maxWidth: '100%',
               }}>
                 <Sparkles size={14} color="#0284C7" />
-                <span style={{ color: '#0F172A', fontWeight: 700 }}>Specialist OPD Today:</span>
+                <span style={{ color: '#0F172A', fontWeight: 700 }}>Doctor OPD Today:</span>
                 <div style={{ height: '20px', overflow: 'hidden', position: 'relative', width: '290px' }}>
                   <AnimatePresence mode="wait">
                     <motion.span
@@ -251,7 +251,7 @@ export function Hero() {
                 fontWeight: 450,
               }}
             >
-              Trusted multi-speciality consultations, surgical expertise, and on-site diagnostic testing (Pathology, ECG, Digital X-Ray) at Pranathi Complex, Subash Road.
+              Consult experienced specialist doctors, get surgery care, and do blood tests, ECG, and X-Rays easily under one roof at Subash Road, Anantapur.
             </motion.p>
 
             {/* CTA Buttons Row */}
@@ -327,26 +327,26 @@ export function Hero() {
               }}>
                 <div style={{
                   padding: '10px 14px', borderRadius: '12px', background: '#FFFFFF',
-                  border: '1px solid #E2E8F0', boxShadow: '0 2px 6px rgba(0,0,0,0.03)'
+                  border: '1px solid #CFFAFE', boxShadow: '0 2px 6px rgba(0,0,0,0.03)'
                 }}>
-                  <div style={{ fontSize: '0.72rem', color: '#64748B', fontWeight: 600 }}>Daily OPD Hours</div>
+                  <div style={{ fontSize: '0.72rem', color: '#64748B', fontWeight: 600 }}>Doctor OPD Hours</div>
                   <div style={{ fontSize: '0.88rem', color: '#0F172A', fontWeight: 800 }}>9:00 AM – 9:00 PM</div>
                 </div>
 
                 <div style={{
                   padding: '10px 14px', borderRadius: '12px', background: '#FFFFFF',
-                  border: '1px solid #E2E8F0', boxShadow: '0 2px 6px rgba(0,0,0,0.03)'
+                  border: '1px solid #CFFAFE', boxShadow: '0 2px 6px rgba(0,0,0,0.03)'
                 }}>
-                  <div style={{ fontSize: '0.72rem', color: '#64748B', fontWeight: 600 }}>In-House Testing</div>
-                  <div style={{ fontSize: '0.88rem', color: '#0F172A', fontWeight: 800 }}>Pathology, ECG, X-Ray</div>
+                  <div style={{ fontSize: '0.72rem', color: '#64748B', fontWeight: 600 }}>In-House Lab</div>
+                  <div style={{ fontSize: '0.88rem', color: '#0F172A', fontWeight: 800 }}>Blood Tests, ECG, X-Ray</div>
                 </div>
 
                 <div style={{
                   padding: '10px 14px', borderRadius: '12px', background: '#FFFFFF',
-                  border: '1px solid #E2E8F0', boxShadow: '0 2px 6px rgba(0,0,0,0.03)'
+                  border: '1px solid #CFFAFE', boxShadow: '0 2px 6px rgba(0,0,0,0.03)'
                 }}>
-                  <div style={{ fontSize: '0.72rem', color: '#64748B', fontWeight: 600 }}>Recognition</div>
-                  <div style={{ fontSize: '0.88rem', color: '#0F172A', fontWeight: 800 }}>DME AP Valid 2028</div>
+                  <div style={{ fontSize: '0.72rem', color: '#64748B', fontWeight: 600 }}>Govt. Approved</div>
+                  <div style={{ fontSize: '0.88rem', color: '#0F172A', fontWeight: 800 }}>AP DME Valid 2028</div>
                 </div>
               </div>
             </motion.div>

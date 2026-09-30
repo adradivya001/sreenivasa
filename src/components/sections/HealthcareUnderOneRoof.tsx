@@ -13,40 +13,40 @@ function scrollTo(id: string) {
 
 const pillars = [
   {
-    title: 'Specialist Consultation',
-    desc: 'Direct access to medical consultations across all 7 recognized disciplines without having to visit multiple clinics.',
+    title: 'Doctor Checkups',
+    desc: 'Direct checkups with specialist doctors across 7 main medical fields in one place.',
     icon: Users,
     color: '#0E7490',
     bg: '#ECFEFF',
     border: '#CFFAFE',
-    points: ['General Medicine & Chronic Care', 'Specialist Paediatric Consultations', 'OBG, Orthopaedic & ENT Clinics', 'Neurosurgical Clinical Evaluations'],
+    points: ['Fever, BP & Diabetes Doctors', 'Child & Baby Health Doctors', 'Maternity & Women’s Health', 'Brain & Spine Specialists'],
   },
   {
-    title: 'Diagnostic Support',
-    desc: 'Reliable in-house Pathology laboratory, ECG cardiac evaluation, and Digital X-Ray scanning for prompt clinical assessment.',
+    title: 'Blood Tests & Scans',
+    desc: 'In-house blood testing lab, ECG heart checks, and digital X-ray scans with fast reports.',
     icon: FlaskConical,
     color: '#0284C7',
     bg: '#F0F9FF',
     border: '#E0F2FE',
-    points: ['Certified Pathology Laboratory', '12-Lead ECG Cardiac Diagnostics', 'High-Resolution Digital X-Ray', 'Prompt & Accurate Diagnostic Reports'],
+    points: ['Certified Blood Test Lab', 'Quick 12-Lead ECG Check', 'Clear Digital X-Rays', 'Fast & Accurate Reports'],
   },
   {
-    title: 'Surgical Care',
-    desc: 'Operative care facilities, sterile procedure suites, and experienced surgical support across surgical departments.',
+    title: 'Surgery & Operations',
+    desc: 'Clean operation rooms, skilled surgeons, and safe recovery care for every patient.',
     icon: HeartPulse,
     color: '#E11D48',
     bg: '#FFF1F2',
     border: '#FFE4E6',
-    points: ['General & Day Care Surgeries', 'Fracture & Orthopaedic Operative Care', 'ENT Endoscopic & Minor Procedures', 'Comprehensive Post-Op Recovery'],
+    points: ['General & Day Surgeries', 'Bone & Fracture Surgeries', 'ENT & Throat Procedures', 'Caring Post-Surgery Help'],
   },
   {
     title: 'Family Healthcare',
-    desc: 'Holistic clinical care spanning pediatric, maternal, adult, and geriatric requirements for every family member.',
+    desc: 'Complete everyday health care for babies, children, mothers, adults, and elderly family members.',
     icon: HeartHandshake,
     color: '#059669',
     bg: '#ECFDF5',
     border: '#D1FAE5',
-    points: ['Child & Adolescent Health Support', 'Women’s Wellness & Antenatal Care', 'Adult Preventive Health Checks', 'Continuity of Care for Families'],
+    points: ['Baby & Child Health Support', 'Mother & Pregnancy Care', 'Adult & Elderly Checkups', 'Trusted Care for the Whole Family'],
   },
 ];
 
@@ -81,7 +81,7 @@ export function HealthcareUnderOneRoof() {
             border: '1px solid #CFFAFE', color: '#0E7490', fontSize: '0.78rem',
             fontWeight: 750, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '0.75rem'
           }}>
-            <ShieldCheck size={14} color="#0E7490" /> PATIENT-CENTERED EXCELLENCE
+            <ShieldCheck size={14} color="#0E7490" /> PATIENT-FIRST CARE
           </div>
           <h2
             id="roof-heading"
@@ -92,7 +92,7 @@ export function HealthcareUnderOneRoof() {
               maxWidth: 760, margin: '0 auto',
             }}
           >
-            Healthcare Under{' '}
+            All Medical Care Under{' '}
             <span style={{
               background: 'linear-gradient(135deg, #0E7490 0%, #0284C7 100%)',
               WebkitBackgroundClip: 'text',
@@ -105,7 +105,7 @@ export function HealthcareUnderOneRoof() {
             marginTop: '12px', color: '#64748B', fontSize: '1.025rem',
             maxWidth: 680, margin: '12px auto 0', lineHeight: 1.7
           }}>
-            From early diagnostic investigations to specialized clinical consultations, surgical solutions, and family wellness — all centralized near Iron Bridge, Anantapur.
+            From blood tests and scans to doctor checkups, surgeries, and family health — all at Subash Road near Iron Bridge, Anantapur.
           </p>
         </motion.div>
 

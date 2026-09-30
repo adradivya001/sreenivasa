@@ -9,18 +9,18 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 const checkmarks = [
   'Recognized by AP Directorate of Medical Education (DME AP)',
-  'Official Recognition Validity: 07 Mar 2025 – 06 Mar 2028',
-  '7 Authorized Multi-Speciality Clinical Departments',
-  'Integrated Pathology, ECG & Digital X-Ray Diagnostic Labs',
-  'Modern Sterile Operative Suites & Inpatient Accommodations',
-  'Centrally Located at Pranathi Complex, Near Iron Bridge, Subash Road',
+  'Govt. Recognition Valid Till: 06 March 2028',
+  '7 Doctor Speciality Departments',
+  'In-House Blood Test Lab, ECG & Digital X-Ray',
+  'Clean Operation Rooms & Inpatient Beds',
+  'Near Iron Bridge, Subash Road, Anantapur',
 ];
 
 const pillars = [
-  { icon: Award, label: 'Government Recognized', desc: 'Officially certified by AP Directorate of Medical Education' },
-  { icon: Stethoscope, label: '7 Core Specialities', desc: 'Structured outpatient & inpatient multidisciplinary clinical care' },
-  { icon: Activity, label: 'Surgical & Emergency Care', desc: 'Precision operative procedures across surgery, neuro & orthopaedics' },
-  { icon: Hospital, label: 'Modern Infrastructure', desc: 'Diagnostic testing, consultation suites & patient recovery wards' },
+  { icon: Award, label: 'Govt. Recognized', desc: 'Officially recognized by AP Directorate of Medical Education' },
+  { icon: Stethoscope, label: '7 Key Specialities', desc: 'Experienced doctors for checkups and treatments' },
+  { icon: Activity, label: 'Surgery & Emergency', desc: 'Safe surgeries for general, bone, nerve, and ENT care' },
+  { icon: Hospital, label: 'Modern Hospital', desc: 'Blood testing lab, doctor rooms, and recovery beds' },
 ];
 
 export function About() {
@@ -59,7 +59,7 @@ export function About() {
               border: '1px solid #CFFAFE', color: '#0E7490', fontSize: '0.78rem',
               fontWeight: 750, letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '1rem'
             }}>
-              <Building2 size={14} color="#0E7490" /> INSTITUTIONAL PROFILE & ACCREDITATION
+              <Building2 size={14} color="#0E7490" /> ABOUT OUR HOSPITAL
             </div>
 
             <h2 id="about-heading" style={{
@@ -67,22 +67,22 @@ export function About() {
               fontSize: 'clamp(2rem, 3.2vw, 2.85rem)', fontWeight: 850,
               lineHeight: 1.15, letterSpacing: '-0.025em', color: '#0F172A', marginBottom: '1.25rem',
             }}>
-              Dedicated Healthcare Institution,{' '}
+              Trusted Healthcare Institution,{' '}
               <span style={{
                 background: 'linear-gradient(135deg, #0E7490 0%, #0284C7 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
               }}>
-                Recognized Medical Excellence.
+                Govt. Recognized Care.
               </span>
             </h2>
 
             <p style={{ fontSize: '1.025rem', color: '#475569', lineHeight: 1.75, marginBottom: '1rem' }}>
-              <strong>Sreenivasa Multi Speciality Hospital</strong> was established to provide ethical, structured, and accessible medical care to the citizens of Anantapur and neighboring regions. Operating from the prominent <strong>Pranathi Complex near Iron Bridge on Subash Road</strong>, the hospital brings together medical doctors, surgeons, and healthcare professionals under one unified facility.
+              <strong>Sreenivasa Multi Speciality Hospital</strong> was established to provide caring, high-quality, and accessible medical care to families in Anantapur. Located at <strong>Pranathi Complex near Iron Bridge on Subash Road</strong>, our hospital brings specialist doctors, surgeons, and diagnostic lab testing all under one roof.
             </p>
 
             <p style={{ fontSize: '0.95rem', color: '#64748B', lineHeight: 1.75, marginBottom: '1.75rem' }}>
-              The hospital is officially recognized by the <strong>Andhra Pradesh Directorate of Medical Education (DME AP)</strong>, with active hospital recognition recorded through <strong>March 6, 2028</strong>. This government recognition reflects our adherence to statutory hospital standards across our 7 core medical departments: <em>General Medicine, General Surgery, Obstetrics & Gynaecology (OBG), Paediatrics, Neurosurgery, Orthopaedics</em>, and <em>ENT</em>, supported by in-house pathology and radiological imaging.
+              Our hospital is officially recognized by the <strong>Andhra Pradesh Directorate of Medical Education (DME AP)</strong> valid through <strong>March 6, 2028</strong>. We have 7 doctor departments: <em>General Medicine (Fever/BP/Sugar), General Surgery, Maternity & Women’s Health (OBG), Child Health (Paediatrics), Brain & Spine (Neurosurgery), Bone & Joint (Orthopaedics)</em>, and <em>ENT</em>, backed by in-house blood testing and digital X-rays.
             </p>
 
             {/* Checkmarks Grid */}
@@ -161,14 +161,14 @@ export function About() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
                   <Award size={20} color="#FACC15" />
                   <span style={{ fontSize: '0.82rem', fontWeight: 750, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
-                    Government Accreditation
+                    Government Recognized
                   </span>
                 </div>
                 <div style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '6px' }}>
                   AP Directorate of Medical Education
                 </div>
                 <div style={{ fontSize: '0.825rem', opacity: 0.9, lineHeight: 1.4 }}>
-                  Listed Multi-Speciality Hospital · Current Validity: <strong>07 Mar 2025 – 06 Mar 2028</strong>
+                  Recognized Multi-Speciality Hospital · Valid Till: <strong>06 Mar 2028</strong>
                 </div>
               </div>
 
@@ -180,7 +180,7 @@ export function About() {
                 border: '1px solid #E2E8F0',
               }}>
                 <div style={{ fontSize: '0.82rem', fontWeight: 750, color: '#64748B', textTransform: 'uppercase', marginBottom: '8px' }}>
-                  Hospital Campus Infrastructure
+                  Hospital Location
                 </div>
                 <div style={{ fontSize: '0.925rem', fontWeight: 750, color: '#0F172A', marginBottom: '4px' }}>
                   Pranathi Complex, Near Iron Bridge
@@ -195,11 +195,11 @@ export function About() {
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px' }}>
                 <div style={{ background: '#ECFEFF', padding: '14px', borderRadius: '12px', border: '1px solid #CFFAFE' }}>
                   <div style={{ fontSize: '1.35rem', fontWeight: 850, color: '#0E7490' }}>7 Specialities</div>
-                  <div style={{ fontSize: '0.75rem', color: '#0369A1', fontWeight: 600 }}>DME AP Listed</div>
+                  <div style={{ fontSize: '0.75rem', color: '#0369A1', fontWeight: 600 }}>Doctor Departments</div>
                 </div>
                 <div style={{ background: '#F0FDF4', padding: '14px', borderRadius: '12px', border: '1px solid #DCFCE7' }}>
-                  <div style={{ fontSize: '1.35rem', fontWeight: 850, color: '#059669' }}>3 Diagnostics</div>
-                  <div style={{ fontSize: '0.75rem', color: '#047857', fontWeight: 600 }}>Pathology, ECG, X-Ray</div>
+                  <div style={{ fontSize: '1.35rem', fontWeight: 850, color: '#059669' }}>3 Lab & Scans</div>
+                  <div style={{ fontSize: '0.75rem', color: '#047857', fontWeight: 600 }}>Blood Test, ECG, X-Ray</div>
                 </div>
               </div>
 
@@ -220,7 +220,7 @@ export function About() {
                   textAlign: 'center',
                 }}
               >
-                Explore Hospital Specialities →
+                View 7 Specialities →
               </a>
             </div>
           </motion.div>

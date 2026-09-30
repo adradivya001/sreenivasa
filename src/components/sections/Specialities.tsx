@@ -52,7 +52,7 @@ export function Specialities() {
             border: '1px solid #CFFAFE', color: '#0E7490', fontSize: '0.78rem',
             fontWeight: 750, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '0.75rem'
           }}>
-            <ShieldCheck size={14} color="#0E7490" /> DME AP RECOGNIZED DEPARTMENTS
+            <ShieldCheck size={14} color="#0E7490" /> 7 DOCTOR SPECIALITIES
           </div>
           <h2
             id="specialities-heading"
@@ -63,7 +63,7 @@ export function Specialities() {
               maxWidth: 760, margin: '0 auto',
             }}
           >
-            Our Medical & Surgical{' '}
+            Our Medical{' '}
             <span style={{
               background: 'linear-gradient(135deg, #0E7490 0%, #0284C7 100%)',
               WebkitBackgroundClip: 'text',
@@ -74,9 +74,9 @@ export function Specialities() {
           </h2>
           <p style={{
             marginTop: '12px', color: '#64748B', fontSize: '1.025rem',
-            maxWidth: 680, margin: '12px auto 0', lineHeight: 1.7
+            maxWidth: 640, margin: '12px auto 0', lineHeight: 1.6
           }}>
-            Providing specialized clinical diagnosis, operative surgical interventions, and dedicated outpatient care across the 7 recognized medical departments in Anantapur.
+            Consult experienced doctors for checkups, treatments, and surgery across 7 key departments under one roof.
           </p>
         </motion.div>
 

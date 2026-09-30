@@ -11,38 +11,38 @@ export interface FAQItem {
 export const faqs: FAQItem[] = [
   {
     category: 'general',
-    question: 'Where is Sreenivasa Multi Speciality Hospital located in Anantapur?',
+    question: 'Where is Sreenivasa Hospital located in Anantapur?',
     answer:
-      'The hospital is located at #28-271, Pranathi Complex, Near Iron Bridge, Subash Road (MDR77, Old Town), Anantapur, Andhra Pradesh – 515001. It is easily accessible from key points in the city.',
+      'We are located at Pranathi Complex, Near Iron Bridge, Subash Road, Old Town, Anantapur (AP – 515001). It is easily accessible from all parts of the city.',
   },
   {
     category: 'general',
-    question: 'Is Sreenivasa Multi Speciality Hospital recognized by the government / DME?',
+    question: 'Is Sreenivasa Hospital recognized by the AP government?',
     answer:
-      'Yes, Sreenivasa Multi Speciality Hospital is officially listed and recognized by the Andhra Pradesh Directorate of Medical Education (DME AP), with recognition currently recorded through March 6, 2028.',
+      'Yes, Sreenivasa Multi Speciality Hospital is officially recognized by the Andhra Pradesh Directorate of Medical Education (DME AP) valid through March 2028.',
   },
   {
     category: 'specialities',
-    question: 'What medical specialities are available at Sreenivasa Hospital?',
+    question: 'What doctor specialities are available at the hospital?',
     answer:
-      'The hospital offers 7 key recognized departments: General Medicine, General Surgery, Obstetrics & Gynaecology (OBG), Paediatrics, Neurosurgery, Orthopaedics, and ENT (Ear, Nose & Throat).',
+      'We have 7 main departments: General Medicine (Fever/Sugar/BP), General Surgery, Maternity & Women’s Health (OBG), Child Health (Paediatrics), Brain & Spine (Neurosurgery), Bone & Joint (Orthopaedics), and Ear-Nose-Throat (ENT).',
   },
   {
     category: 'diagnostics',
-    question: 'What diagnostic services are available on-site?',
+    question: 'What lab tests and scans are available in the hospital?',
     answer:
-      'The hospital provides in-house Pathology (laboratory testing & clinical investigations), ECG (electrocardiogram cardiac assessment), and high-resolution Digital X-Ray imaging.',
+      'We have an in-house blood testing lab, ECG heart check, and digital X-ray scans with fast and accurate reports.',
   },
   {
     category: 'appointments',
-    question: 'How can I book an appointment or contact the hospital?',
+    question: 'How do I book a doctor visit or contact the hospital?',
     answer:
-      'You can easily schedule a consultation online via the booking form on this website, call the hospital directly at 08554-272828 or +91 98498 98698, or connect with our helpdesk on WhatsApp.',
+      'You can book online directly using the appointment form on this website, call us at 08554-272828 or +91 98498 98698, or send a message on WhatsApp.',
   },
   {
     category: 'general',
-    question: 'What are the outpatient (OPD) consultation hours?',
+    question: 'What are the doctor checkup (OPD) timings?',
     answer:
-      'Outpatient consultations run Monday through Saturday from 9:00 AM to 9:00 PM, and on Sundays from 9:00 AM to 2:00 PM. Specific specialist timings may vary by department.',
+      'Doctor checkups are available Monday to Saturday from 9:00 AM to 9:00 PM, and on Sundays from 9:00 AM to 2:00 PM. Emergency medical care is open 24/7.',
   },
 ];

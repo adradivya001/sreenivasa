@@ -8,17 +8,17 @@
 export const siteConfig = {
   name: 'Sreenivasa Multi Speciality Hospital',
   shortName: 'Sreenivasa Hospital',
-  tagline: 'Comprehensive Healthcare · Trusted Medical Care',
+  tagline: 'Better Health · Trusted Care',
   subTagline: 'Your Health. Our Priority.',
   heroLabel: 'SREENIVASA MULTI SPECIALITY HOSPITAL',
-  heroHeadingLine1: 'Comprehensive Healthcare.',
-  heroHeadingLine2: 'Trusted Medical Care.',
-  heroBadges: 'Expert Care | Multiple Specialities | Diagnostic Services',
+  heroHeadingLine1: 'Complete Care.',
+  heroHeadingLine2: 'Trusted Doctors.',
+  heroBadges: 'Expert Doctors | 7 Specialities | In-House Lab',
   description:
-    'Sreenivasa Multi Speciality Hospital provides expert clinical consultations, operative surgery, and on-site Pathology, ECG, and X-Ray diagnostics at Pranathi Complex, Near Iron Bridge, Subash Road, Anantapur.',
+    'Sreenivasa Multi Speciality Hospital offers experienced doctor checkups, surgery care, and fast blood tests, ECG, and X-Ray diagnostics at Subash Road, Anantapur.',
 
   aboutSummary:
-    'Established as a premier multidisciplinary healthcare destination in Anantapur, Sreenivasa Multi Speciality Hospital is officially recognized by the Andhra Pradesh Directorate of Medical Education (DME AP) valid through March 2028.',
+    'Sreenivasa Multi Speciality Hospital is a trusted hospital in Anantapur, officially recognized by the Andhra Pradesh Directorate of Medical Education (DME AP) valid through March 2028.',
 
   recognition: {
     authority: 'Andhra Pradesh Directorate of Medical Education (DME AP)',
@@ -49,14 +49,14 @@ export const siteConfig = {
     mapQuery: 'Sreenivasa+Multi+Speciality+Hospital+Subash+Road+Iron+Bridge+Anantapur',
     googleMapsUrl: 'https://maps.google.com/?q=Sreenivasa+Multi+Speciality+Hospital+Iron+Bridge+Subash+Road+Anantapur',
     opdHours: 'Mon - Sat: 9:00 AM - 9:00 PM | Sun: 9:00 AM - 2:00 PM',
-    emergencyHours: 'Available for Urgent Medical Evaluations',
+    emergencyHours: '24/7 Casualty & Emergency Care',
   },
 
   stats: [
-    { value: '7+', label: 'Core Medical Specialities', desc: 'DME AP Recognized Departments' },
-    { value: '2028', label: 'Recognition Valid Thru', desc: 'AP Directorate of Medical Education' },
-    { value: '3+', label: 'Diagnostic Services', desc: 'Pathology, ECG & Digital X-Ray' },
-    { value: '100%', label: 'Dedicated Patient Care', desc: 'Comprehensive Multi-Speciality Facility' },
+    { value: '7', label: 'Doctor Specialities', desc: 'Medicine, Surgery, OBG & more' },
+    { value: '2028', label: 'Govt. Recognized', desc: 'AP DME Valid Till 2028' },
+    { value: '3+', label: 'Lab & Scan Services', desc: 'Blood Tests, ECG & X-Ray' },
+    { value: '100%', label: 'Patient Focus', desc: 'Caring for your family' },
   ],
 
   pillars: [
@@ -82,23 +82,23 @@ export const siteConfig = {
   diagnostics: [
     {
       id: 'pathology',
-      name: 'Pathology & Laboratory',
-      desc: 'Comprehensive clinical biochemistry, hematology, routine investigations, and diagnostic testing.',
-      badge: 'Certified Diagnostic Lab',
+      name: 'Blood Tests & Lab',
+      desc: 'Routine blood tests, sugar checks, liver and kidney tests, and urine tests with fast reports.',
+      badge: 'In-House Lab',
       icon: 'FlaskConical',
     },
     {
       id: 'ecg',
-      name: 'ECG (Electrocardiogram)',
-      desc: 'High-precision electrocardiogram testing for rapid cardiac rhythm evaluation and pre-operative cardiac assessment.',
-      badge: 'Cardiac Assessment',
+      name: 'ECG Heart Check',
+      desc: 'Quick heart test to check heart beat, rhythm, and pre-surgery safety.',
+      badge: 'Heart Check',
       icon: 'Activity',
     },
     {
       id: 'xray',
       name: 'Digital X-Ray',
-      desc: 'High-resolution digital radiography for precise musculoskeletal, orthopedic, chest, and internal skeletal evaluations.',
-      badge: 'Digital Imaging',
+      desc: 'Clear digital pictures for broken bones, fractures, joints, and chest checkups.',
+      badge: 'Digital X-Ray',
       icon: 'Scan',
     },
   ],
@@ -107,30 +107,30 @@ export const siteConfig = {
     {
       id: 'emergency-care',
       title: 'Emergency Care',
-      description: 'Immediate medical attention, triage evaluation, and prompt stabilization for urgent healthcare needs.',
+      description: 'Quick medical help and doctor attention for urgent health needs.',
       icon: 'ShieldAlert',
-      badge: 'Immediate Response',
+      badge: '24/7 Support',
     },
     {
       id: 'diagnostic-services',
-      title: 'Diagnostic Services',
-      description: 'In-house Pathology laboratory, ECG cardiac evaluation, and Digital X-Ray imaging for swift clinical diagnosis.',
+      title: 'Lab & Scan Services',
+      description: 'In-house blood testing lab, ECG heart checks, and digital X-ray scans.',
       icon: 'Microscope',
-      badge: 'Pathology · ECG · X-Ray',
+      badge: 'Fast Reports',
     },
     {
       id: 'outpatient-consultation',
-      title: 'Outpatient Consultation',
-      description: 'Structured specialist evaluations and comprehensive consultations across all 7 medical disciplines.',
+      title: 'Doctor Checkups',
+      description: 'Meet experienced doctors across 7 main medical specialities.',
       icon: 'UserCheck',
       badge: '7 Specialities',
     },
     {
       id: 'surgical-care',
-      title: 'Surgical Care',
-      description: 'Expert operative care, pre-operative planning, and modern surgical facilities across General Surgery, Neurosurgery, Orthopaedics, and ENT.',
+      title: 'Surgeries & Operations',
+      description: 'Expert surgeries and caring recovery for general, bone, nerve, and ENT conditions.',
       icon: 'HeartPulse',
-      badge: 'Operative Excellence',
+      badge: 'Expert Surgeons',
     },
   ],
 
