@@ -245,13 +245,13 @@ export function Hero() {
               style={{
                 fontSize: 'clamp(0.975rem, 1.15vw, 1.075rem)',
                 color: '#475569',
-                lineHeight: 1.65,
-                maxWidth: '580px',
-                margin: '0 0 2rem 0',
+                lineHeight: 1.6,
+                maxWidth: '540px',
+                margin: '0 0 1.75rem 0',
                 fontWeight: 450,
               }}
             >
-              Direct access to senior physicians, surgeons, and department specialists in Anantapur. Experience seamless outpatient consultations, operative care, and rapid in-house diagnostic testing at Pranathi Complex, Subash Road.
+              Trusted multi-speciality consultations, surgical expertise, and on-site diagnostic testing (Pathology, ECG, Digital X-Ray) at Pranathi Complex, Subash Road.
             </motion.p>
 
             {/* CTA Buttons Row */}

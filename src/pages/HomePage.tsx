@@ -1,16 +1,10 @@
 import { Helmet } from 'react-helmet-async';
 import { Hero } from '@/components/sections/Hero';
 import { TrustStrip } from '@/components/sections/TrustStrip';
-import { About } from '@/components/sections/About';
 import { Specialities } from '@/components/sections/Specialities';
-import { DiagnosticsSection } from '@/components/sections/DiagnosticsSection';
-import { HealthcareUnderOneRoof } from '@/components/sections/HealthcareUnderOneRoof';
 import { Doctors } from '@/components/sections/Doctors';
 import { WhyChoose } from '@/components/sections/WhyChoose';
-import { CareBeyondVisit } from '@/components/sections/CareBeyondVisit';
 import { CareBand } from '@/components/sections/CareBand';
-import { DigitalHealthSection } from '@/components/sections/DigitalHealthSection';
-import { PatientJourney } from '@/components/sections/PatientJourney';
 import { Appointment } from '@/components/sections/Appointment';
 import { Contact } from '@/components/sections/Contact';
 import { FAQ } from '@/components/sections/FAQ';
@@ -65,43 +59,25 @@ export function HomePage() {
       {/* 2. TRUST / QUICK STATS */}
       <TrustStrip />
 
-      {/* 3. ABOUT INSTITUTION */}
-      <About />
-
-      {/* 4. DEPARTMENTS & SPECIALITIES */}
+      {/* 3. DEPARTMENTS & SPECIALITIES (Includes Diagnostics) */}
       <Specialities />
 
-      {/* 5. DIAGNOSTICS (Pathology, ECG, Digital X-Ray) */}
-      <DiagnosticsSection />
-
-      {/* 6. HEALTHCARE UNDER ONE ROOF */}
-      <HealthcareUnderOneRoof />
-
-      {/* 7. DOCTORS & SPECIALISTS */}
+      {/* 4. DOCTORS & SPECIALISTS */}
       <Doctors />
 
-      {/* 8. WHY CHOOSE SREENIVASA */}
+      {/* 5. WHY CHOOSE SREENIVASA */}
       <WhyChoose />
 
-      {/* 9. CARE BEYOND VISIT (WhatsApp Simulation & Post-Care) */}
-      <CareBeyondVisit />
-
-      {/* 10. CARE BAND (Full-Width Quote & Action Strip) */}
+      {/* 6. CARE BAND RIBBON */}
       <CareBand />
 
-      {/* 11. SMART DIGITAL HEALTHCARE ECOSYSTEM */}
-      <DigitalHealthSection />
-
-      {/* 12. PATIENT JOURNEY ROADMAP */}
-      <PatientJourney />
-
-      {/* 13. APPOINTMENT FLOW */}
+      {/* 7. APPOINTMENT FLOW */}
       <Appointment />
 
-      {/* 14. LOCATION & DIRECTIONS */}
+      {/* 8. LOCATION & DIRECTIONS */}
       <Contact />
 
-      {/* 15. FAQ ACCORDION */}
+      {/* 9. FAQ ACCORDION */}
       {siteConfig.features.showFAQ && <FAQ />}
     </>
   );
